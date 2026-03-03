@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚓ 家族で横浜おでかけ計画 🚢</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Zen Maru Gothic', sans-serif;
+            background: linear-gradient(180deg, #0a1628 0%, #0d2137 15%, #1a4b8c 40%, #1a6b8a 65%, #1a8c7a 85%, #0a1628 100%);
+            color: #e0f0ff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* ===== Animated Bubbles Background ===== */
+        .bubbles-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15), rgba(255,255,255,0.03));
+            border: 1px solid rgba(255,255,255,0.08);
+            animation: bubbleRise linear infinite;
+        }
+        @keyframes bubbleRise {
+            0% { transform: translateY(100vh) translateX(0) scale(1); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100px) translateX(40px) scale(1.2); opacity: 0; }
+        }
+
+        /* ===== Wave Animations ===== */
+        @keyframes waveFlow {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        @keyframes waveFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        @keyframes anchorSway {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        @keyframes compassSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes gentlePulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+        }
+        @keyframes lighthouseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255,215,100,0.3), 0 0 40px rgba(255,215,100,0.1); }
+            50% { box-shadow: 0 0 40px rgba(255,215,100,0.6), 0 0 80px rgba(255,215,100,0.2); }
+        }
+
+        /* ===== Wave Divider ===== */
+        .wave-divider {
+            position: relative;
+            width: 100%;
+            height: 60px;
+            overflow: hidden;
+        }
+        .wave-divider svg {
+            position: absolute;
+            bottom: 0;
+            width: 200%;
+            height: 60px;
+            animation: waveFlow 8s linear infinite;
+        }
+        .wave-divider svg path {
+            fill: rgba(26,75,140,0.3);
+        }
+        .wave-divider.wave-teal svg path { fill: rgba(32,201,151,0.15); }
+        .wave-divider.wave-gold svg path { fill: rgba(255,215,100,0.1); }
+
+        /* ===== Top Wave Banner ===== */
+        .top-waves {
+            position: relative;
+            width: 100%;
+            height: 120px;
+            overflow: hidden;
+            background: linear-gradient(180deg, #0a1628 0%, rgba(10,22,40,0) 100%);
+        }
+        .top-waves .wave-layer {
+            position: absolute;
+            bottom: 0;
+            width: 200%;
+            height: 80px;
+        }
+        .top-waves .wave-layer:nth-child(1) {
+            animation: waveFlow 7s linear infinite;
+            opacity: 0.3;
+        }
+        .top-waves .wave-layer:nth-child(2) {
+            animation: waveFlow 11s linear infinite reverse;
+            opacity: 0.2;
+            bottom: 10px;
+        }
+        .top-waves .wave-layer:nth-child(3) {
+            animation: waveFlow 9s linear infinite;
+            opacity: 0.15;
+            bottom: 20px;
+        }
+
+        /* ===== Hero ===== */
+        .hero {
+            position: relative;
+            text-align: center;
+            padding: 50px 20px 40px;
+            background: radial-gradient(ellipse at 50% 0%, rgba(26,75,140,0.4) 0%, transparent 70%);
+        }
+        .hero-anchor {
+            font-size: 3.5rem;
+            display: inline-block;
+            animation: anchorSway 4s ease-in-out infinite;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 20px rgba(32,201,151,0.4));
+        }
+        .hero-date {
+            display: inline-block;
+            background: linear-gradient(90deg, #20c997, #54a0ff, #ffd76b, #20c997);
+            background-size: 300% 100%;
+            animation: shimmer 4s linear infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #e0f0ff, #20c997, #54a0ff, #ffd76b);
+            background-size: 300% 300%;
+            animation: shimmer 6s linear infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        .hero-subtitle {
+            font-size: 1rem;
+            color: rgba(224,240,255,0.7);
+            margin-bottom: 15px;
+        }
+        .hero-emoji-row {
+            font-size: 2.2rem;
+            margin: 10px 0;
+            animation: waveFloat 3s ease-in-out infinite;
+        }
+        .hero-compass {
+            display: inline-block;
+            font-size: 2rem;
+            animation: compassSpin 12s linear infinite;
+            margin-top: 10px;
+        }
+
+        /* ===== Container ===== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== Section Title with Nautical Flair ===== */
+        .section-divider {
+            text-align: center;
+            margin: 50px 0 30px;
+            position: relative;
+        }
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 25%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(32,201,151,0.4), transparent);
+        }
+        .section-divider::before { left: 5%; }
+        .section-divider::after { right: 5%; }
+        .section-divider-icon {
+            font-size: 1.5rem;
+            margin: 0 15px;
+        }
+
+        /* ===== Timeline ===== */
+        .timeline { position: relative; padding-left: 45px; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 16px; top: 0; bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #20c997, #54a0ff, #1a4b8c, #ffd76b, #20c997);
+            border-radius: 3px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            animation: slideInUp 0.6s ease-out both;
+        }
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.5s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.7s; }
+        .timeline-dot {
+            position: absolute;
+            left: -37px; top: 25px;
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 14px; z-index: 2;
+            box-shadow: 0 0 15px rgba(32,201,151,0.4);
+        }
+        .dot-movie { background: linear-gradient(135deg, #1a4b8c, #2e86de); }
+        .dot-lunch { background: linear-gradient(135deg, #ffd76b, #f0932b); }
+        .dot-cafe { background: linear-gradient(135deg, #20c997, #1a8c7a); }
+        .dot-shopping { background: linear-gradient(135deg, #54a0ff, #1a4b8c); }
+
+        /* ===== Cards - Frosted Glass with Ocean Tint ===== */
+        .card {
+            background: rgba(10,30,60,0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(32,201,151,0.2);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 30px rgba(32,201,151,0.1);
+            border-color: rgba(32,201,151,0.4);
+        }
+        .card-header {
+            padding: 20px 25px 15px;
+            display: flex; align-items: center; gap: 12px;
+        }
+        .card-time {
+            background: rgba(32,201,151,0.2);
+            border: 1px solid rgba(32,201,151,0.3);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            white-space: nowrap;
+            color: #20c997;
+        }
+        .card-title { font-size: 1.4rem; font-weight: 900; color: #e0f0ff; }
+        .card-body { padding: 0 25px 25px; }
+
+        /* ===== Section Top Borders ===== */
+        .movie-section { border-top: 3px solid; border-image: linear-gradient(90deg, #1a4b8c, #54a0ff, #20c997) 1; }
+        .lunch-section { border-top: 3px solid; border-image: linear-gradient(90deg, #ffd76b, #f0932b, #20c997) 1; }
+        .cafe-section { border-top: 3px solid; border-image: linear-gradient(90deg, #20c997, #1a8c7a, #54a0ff) 1; }
+        .shopping-section { border-top: 3px solid; border-image: linear-gradient(90deg, #54a0ff, #1a4b8c, #20c997) 1; }
+
+        /* ===== Movie ===== */
+        .movie-banner { position: relative; width: 100%; height: 300px; overflow: hidden; }
+        .movie-banner img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+        .movie-banner-overlay {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            height: 60%;
+            background: linear-gradient(transparent, rgba(10,22,40,0.95));
+        }
+        .movie-logo { position: absolute; bottom: 15px; left: 25px; max-height: 60px; }
+        .movie-info { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 15px 0; }
+        .movie-info-item {
+            background: rgba(26,75,140,0.2);
+            padding: 12px 15px; border-radius: 12px;
+            border-left: 3px solid;
+            border: 1px solid rgba(32,201,151,0.1);
+            border-left: 3px solid;
+        }
+        .movie-info-item:nth-child(1) { border-left-color: #54a0ff; }
+        .movie-info-item:nth-child(2) { border-left-color: #20c997; }
+        .movie-info-item:nth-child(3) { border-left-color: #ffd76b; }
+        .movie-info-item:nth-child(4) { border-left-color: #7ec8e3; }
+        .movie-info-label {
+            font-size: 0.7rem; color: rgba(224,240,255,0.45);
+            text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;
+        }
+        .movie-info-value { font-size: 0.9rem; font-weight: 700; color: #e0f0ff; }
+        .movie-synopsis {
+            background: rgba(26,75,140,0.15);
+            padding: 18px; border-radius: 12px;
+            line-height: 1.8; font-size: 0.9rem;
+            color: rgba(224,240,255,0.85);
+            margin: 15px 0;
+            border: 1px solid rgba(32,201,151,0.1);
+        }
+        .cast-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-top: 15px; }
+        .cast-item { text-align: center; }
+        .cast-item img {
+            width: 70px; height: 70px; border-radius: 50%; object-fit: cover;
+            border: 2px solid rgba(32,201,151,0.3); margin-bottom: 6px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .cast-item img:hover {
+            border-color: #20c997;
+            box-shadow: 0 0 15px rgba(32,201,151,0.4);
+        }
+        .cast-name { font-size: 0.7rem; color: rgba(224,240,255,0.7); }
+        .cast-role { font-size: 0.65rem; color: rgba(224,240,255,0.4); }
+        .theater-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: linear-gradient(135deg, rgba(26,75,140,0.3), rgba(32,201,151,0.15));
+            border: 1px solid rgba(32,201,151,0.3);
+            padding: 10px 18px; border-radius: 12px; margin-top: 12px; font-size: 0.85rem;
+        }
+        .theater-badge strong { color: #20c997; }
+
+        /* ===== Lunch ===== */
+        .lunch-options { display: grid; grid-template-columns: 1fr; gap: 18px; }
+        .lunch-option {
+            background: rgba(10,30,60,0.4);
+            border-radius: 16px; padding: 20px;
+            border: 1px solid rgba(32,201,151,0.12);
+            transition: all 0.3s;
+        }
+        .lunch-option:hover { background: rgba(10,30,60,0.6); border-color: rgba(32,201,151,0.3); }
+        .lunch-option-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+        .lunch-icon {
+            font-size: 2rem; width: 50px; height: 50px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 12px; flex-shrink: 0;
+        }
+        .icon-yakiniku { background: rgba(255,107,107,0.15); border: 1px solid rgba(255,107,107,0.2); }
+        .icon-ramen { background: rgba(255,215,107,0.15); border: 1px solid rgba(255,215,107,0.2); }
+        .icon-hamburg { background: rgba(32,201,151,0.15); border: 1px solid rgba(32,201,151,0.2); }
+        .lunch-option h4 { font-size: 1.1rem; margin-bottom: 2px; color: #e0f0ff; }
+        .lunch-tag { font-size: 0.7rem; padding: 2px 8px; border-radius: 10px; display: inline-block; }
+        .tag-popular { background: rgba(255,107,107,0.2); color: #ff8a8a; border: 1px solid rgba(255,107,107,0.2); }
+        .tag-classic { background: rgba(255,215,107,0.2); color: #ffd76b; border: 1px solid rgba(255,215,107,0.2); }
+        .tag-family { background: rgba(32,201,151,0.2); color: #20c997; border: 1px solid rgba(32,201,151,0.2); }
+
+        /* ===== Shop Card ===== */
+        .shop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .shop-card {
+            background: rgba(10,30,60,0.5);
+            border-radius: 14px;
+            border: 1px solid rgba(84,160,255,0.12);
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .shop-card:hover {
+            border-color: rgba(32,201,151,0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        .shop-card a { text-decoration: none; color: inherit; display: block; }
+        .shop-card-img {
+            width: 100%; height: 150px;
+            object-fit: cover; display: block;
+            background: rgba(26,75,140,0.2);
+        }
+        .shop-card-body { padding: 14px; }
+        .shop-card-name { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; color: #e0f0ff; }
+        .shop-card-desc { font-size: 0.75rem; color: rgba(224,240,255,0.6); line-height: 1.5; }
+        .shop-card-access { font-size: 0.7rem; color: rgba(224,240,255,0.4); margin-top: 6px; }
+        .shop-card-link {
+            display: inline-block; margin-top: 8px; font-size: 0.7rem;
+            color: #20c997; text-decoration: none;
+            border-bottom: 1px dotted rgba(32,201,151,0.4);
+            transition: color 0.2s;
+        }
+        .shop-card-link:hover { color: #ffd76b; }
+
+        /* ===== Spot Cards (Cafe & Shopping) ===== */
+        .spot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .spot-card {
+            background: rgba(10,30,60,0.5);
+            border-radius: 14px; overflow: hidden;
+            border: 1px solid rgba(32,201,151,0.12);
+            transition: all 0.3s;
+        }
+        .spot-card:hover { transform: translateY(-3px); border-color: rgba(32,201,151,0.4); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
+        .spot-card a { text-decoration: none; color: inherit; display: block; }
+        .spot-card-img { width: 100%; height: 160px; object-fit: cover; display: block; background: rgba(26,75,140,0.2); }
+        .spot-card-body { padding: 14px; }
+        .spot-card-body h4 { font-size: 0.95rem; margin-bottom: 6px; color: #e0f0ff; }
+        .spot-card-body p { font-size: 0.78rem; color: rgba(224,240,255,0.6); line-height: 1.5; }
+        .spot-category { display: inline-block; font-size: 0.65rem; padding: 2px 8px; border-radius: 8px; margin-bottom: 6px; }
+        .cat-cafe { background: rgba(32,201,151,0.2); color: #20c997; }
+        .cat-shop { background: rgba(84,160,255,0.2); color: #54a0ff; }
+        .cat-spot { background: rgba(255,215,107,0.2); color: #ffd76b; }
+        .spot-link {
+            display: inline-block; margin-top: 8px; font-size: 0.7rem;
+            color: #20c997; text-decoration: none;
+            border-bottom: 1px dotted rgba(32,201,151,0.4);
+        }
+        .spot-link:hover { color: #ffd76b; }
+
+        /* ===== Note Box ===== */
+        .note-box {
+            background: rgba(32,201,151,0.08);
+            border: 1px solid rgba(32,201,151,0.2);
+            border-radius: 12px; padding: 14px 18px; margin-top: 15px;
+            font-size: 0.8rem; color: rgba(224,240,255,0.7);
+            display: flex; align-items: flex-start; gap: 10px;
+        }
+        .note-box-icon { font-size: 1.2rem; flex-shrink: 0; }
+
+        /* ===== Ticket CTA ===== */
+        .ticket-cta {
+            display: block; text-align: center;
+            background: linear-gradient(135deg, #1a4b8c, #20c997);
+            color: #fff; padding: 14px 30px;
+            border-radius: 50px; text-decoration: none;
+            font-weight: 700; font-size: 1rem; margin-top: 15px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(32,201,151,0.3);
+        }
+        .ticket-cta:hover { transform: scale(1.03); box-shadow: 0 6px 25px rgba(32,201,151,0.5); }
+
+        /* ===== Schedule Summary ===== */
+        .schedule-summary {
+            background: rgba(10,30,60,0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px; padding: 30px; margin-top: 50px;
+            border: 1px solid rgba(32,201,151,0.2);
+        }
+        .schedule-summary h3 {
+            text-align: center; font-size: 1.3rem; margin-bottom: 20px;
+            background: linear-gradient(135deg, #20c997, #54a0ff, #ffd76b);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .schedule-row {
+            display: flex; align-items: center; gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(32,201,151,0.08);
+        }
+        .schedule-row:last-child { border-bottom: none; }
+        .schedule-time-badge {
+            background: rgba(32,201,151,0.15);
+            border: 1px solid rgba(32,201,151,0.2);
+            padding: 6px 14px; border-radius: 20px;
+            font-size: 0.85rem; font-weight: 700;
+            min-width: 100px; text-align: center; flex-shrink: 0;
+            color: #20c997;
+        }
+        .schedule-icon { font-size: 1.3rem; flex-shrink: 0; }
+        .schedule-desc { font-size: 0.9rem; }
+        .schedule-desc strong { display: block; margin-bottom: 2px; color: #e0f0ff; }
+        .schedule-desc small { color: rgba(224,240,255,0.5); font-size: 0.75rem; }
+
+        /* ===== Footer ===== */
+        .footer {
+            text-align: center; padding: 40px 20px;
+            color: rgba(224,240,255,0.3); font-size: 0.8rem;
+            position: relative;
+        }
+        .footer-waves {
+            font-size: 1.5rem; margin-bottom: 10px;
+            animation: gentlePulse 3s ease-in-out infinite;
+        }
+        .footer a { color: rgba(32,201,151,0.5); text-decoration: none; }
+        .footer a:hover { color: #20c997; }
+
+        /* ===== Ship Wheel Decorative ===== */
+        .ship-wheel {
+            display: inline-block;
+            font-size: 2.5rem;
+            animation: compassSpin 20s linear infinite;
+            margin: 0 10px;
+            filter: drop-shadow(0 0 10px rgba(32,201,151,0.3));
+        }
+
+        /* ===== Nautical Rope Border ===== */
+        .rope-border {
+            width: 80%;
+            max-width: 600px;
+            height: 2px;
+            margin: 20px auto;
+            background: repeating-linear-gradient(
+                90deg,
+                rgba(32,201,151,0.3) 0px,
+                rgba(32,201,151,0.3) 8px,
+                transparent 8px,
+                transparent 12px,
+                rgba(255,215,107,0.3) 12px,
+                rgba(255,215,107,0.3) 20px,
+                transparent 20px,
+                transparent 24px
+            );
+        }
+
+        /* ===== Lighthouse decoration ===== */
+        .lighthouse {
+            position: fixed;
+            right: 20px;
+            top: 30%;
+            font-size: 2rem;
+            opacity: 0.2;
+            animation: lighthouseGlow 3s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 1.7rem; }
+            .hero-anchor { font-size: 2.5rem; }
+            .movie-info { grid-template-columns: 1fr; }
+            .cast-grid { grid-template-columns: repeat(3, 1fr); }
+            .shop-grid { grid-template-columns: 1fr; }
+            .spot-grid { grid-template-columns: 1fr; }
+            .schedule-row { flex-wrap: wrap; }
+            .lighthouse { display: none; }
+            .hero-emoji-row { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bubbles-container" id="bubbles"></div>
+<div class="lighthouse">🗼</div>
+
+<!-- ===== Top Wave Animation ===== -->
+<div class="top-waves">
+    <svg class="wave-layer" viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path d="M0,40 C180,80 360,0 540,40 C720,80 900,0 1080,40 C1260,80 1440,0 1440,40 L1440,80 L0,80 Z" fill="rgba(26,75,140,0.25)"/>
+    </svg>
+    <svg class="wave-layer" viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path d="M0,50 C200,10 400,70 600,30 C800,70 1000,10 1200,50 C1300,70 1400,30 1440,50 L1440,80 L0,80 Z" fill="rgba(32,201,151,0.15)"/>
+    </svg>
+    <svg class="wave-layer" viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path d="M0,30 C240,70 480,10 720,50 C960,10 1200,70 1440,30 L1440,80 L0,80 Z" fill="rgba(84,160,255,0.1)"/>
+    </svg>
+</div>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+    <div class="hero-anchor">⚓</div>
+    <div class="hero-date">2026.03.07 SATURDAY</div>
+    <h1>家族で横浜おでかけ計画</h1>
+    <p class="hero-subtitle">映画 &times; ランチ &times; おでかけ ー 港町横浜で最高の土曜日を！</p>
+    <div class="hero-emoji-row">🎬 🍖 🍰 🛍️</div>
+    <div class="rope-border"></div>
+    <div style="margin-top:10px;">
+        <span class="ship-wheel">🚢</span>
+        <span class="hero-compass">🧭</span>
+        <span class="ship-wheel" style="animation-direction:reverse;">🚢</span>
+    </div>
+</section>
+
+<!-- ===== Wave Divider ===== -->
+<div class="wave-divider">
+    <svg viewBox="0 0 2880 60" preserveAspectRatio="none">
+        <path d="M0,30 C180,60 360,0 540,30 C720,60 900,0 1080,30 C1260,60 1440,0 1620,30 C1800,60 1980,0 2160,30 C2340,60 2520,0 2700,30 C2880,60 2880,60 2880,60 L2880,60 L0,60 Z"/>
+    </svg>
+</div>
+
+<div class="container">
+    <div class="timeline">
+
+        <!-- ======== STEP 1: 映画 ======== -->
+        <div class="timeline-item">
+            <div class="timeline-dot dot-movie">🎬</div>
+            <div class="card movie-section">
+                <div class="movie-banner">
+                    <img src="https://eiga-specials.com/assets/images/top/kv3.jpg" alt="スペシャルズ キービジュアル">
+                    <div class="movie-banner-overlay"></div>
+                    <img class="movie-logo" src="https://eiga-specials.com/assets/images/top/kv_logo.png" alt="スペシャルズ ロゴ">
+                </div>
+                <div class="card-header">
+                    <span class="card-time">10:00〜</span>
+                    <span class="card-title">STEP 1 ー 映画鑑賞</span>
+                </div>
+                <div class="card-body">
+                    <div class="movie-info">
+                        <div class="movie-info-item">
+                            <div class="movie-info-label">タイトル</div>
+                            <div class="movie-info-value">スペシャルズ THE SPECIALS</div>
+                        </div>
+                        <div class="movie-info-item">
+                            <div class="movie-info-label">公開日</div>
+                            <div class="movie-info-value">2026年3月6日（金）〜</div>
+                        </div>
+                        <div class="movie-info-item">
+                            <div class="movie-info-label">ジャンル</div>
+                            <div class="movie-info-value">ダンスアクション・エンタメ</div>
+                        </div>
+                        <div class="movie-info-item">
+                            <div class="movie-info-label">上映時間</div>
+                            <div class="movie-info-value">110分</div>
+                        </div>
+                    </div>
+                    <div class="movie-synopsis">
+                        <strong style="color:#ffd76b;">殺し屋たちがダンス！？</strong><br><br>
+                        伝説の殺し屋たちが「ダンス経験がある」という理由で集められる。裏社会のトップを暗殺するため、ダンス大会への出場を目指してチームを結成！しかし実はド素人で、ダンス教室に通い始めるも問題を起こして破門…。児童養護施設のダンス少女・明香の助けを借りながら、個性的な5人が「スペシャルな」チームへと成長していく！<br><br>
+                        <span style="color:rgba(224,240,255,0.5);">主題歌：Snow Man「オドロウゼ！」</span>
+                    </div>
+                    <h4 style="font-size:0.85rem; color:rgba(224,240,255,0.5); margin-bottom:10px;">MAIN CAST</h4>
+                    <div class="cast-grid">
+                        <div class="cast-item">
+                            <img src="https://eiga-specials.com/assets/images/cast/sakuma-daisuke/pic.jpg" alt="佐久間大介">
+                            <div class="cast-name">佐久間大介</div>
+                            <div class="cast-role">ダイヤ役</div>
+                        </div>
+                        <div class="cast-item">
+                            <img src="https://eiga-specials.com/assets/images/cast/shiina-kippei/pic.jpg" alt="椎名桔平">
+                            <div class="cast-name">椎名桔平</div>
+                            <div class="cast-role">熊城役</div>
+                        </div>
+                        <div class="cast-item">
+                            <img src="https://eiga-specials.com/assets/images/cast/nakamoto-yuta/pic.jpg" alt="中本悠太">
+                            <div class="cast-name">中本悠太</div>
+                            <div class="cast-role">桐生役</div>
+                        </div>
+                        <div class="cast-item">
+                            <img src="https://eiga-specials.com/assets/images/cast/aoyagi-sho/pic.jpg" alt="青柳翔">
+                            <div class="cast-name">青柳翔</div>
+                            <div class="cast-role">シン役</div>
+                        </div>
+                        <div class="cast-item">
+                            <img src="https://eiga-specials.com/assets/images/cast/ozawa-hitoshi/pic.jpg" alt="小沢仁志">
+                            <div class="cast-name">小沢仁志</div>
+                            <div class="cast-role">村雨役</div>
+                        </div>
+                    </div>
+                    <div class="theater-badge">
+                        🎥 <span>おすすめ上映館：<strong>横浜ブルク13</strong>（桜木町駅直結）</span>
+                    </div>
+                    <div class="note-box">
+                        <span class="note-box-icon">🧭</span>
+                        <span>
+                            他にも <strong>ユナイテッドシネマ みなとみらい</strong>、<strong>TOHOシネマズ上大岡</strong>、<strong>TOHOシネマズららぽーと横浜</strong> でも上映中！<br>
+                            公開翌日なので早めの時間がおすすめです。
+                        </span>
+                    </div>
+                    <a href="https://eiga-specials.com/ticket/" target="_blank" class="ticket-cta">
+                        🎟️ チケット情報を見る
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== Wave between sections ===== -->
+        <div class="wave-divider wave-teal" style="margin: -20px 0 -20px -45px; width: calc(100% + 45px);">
+            <svg viewBox="0 0 2880 60" preserveAspectRatio="none">
+                <path d="M0,25 C240,50 480,0 720,25 C960,50 1200,0 1440,25 C1680,50 1920,0 2160,25 C2400,50 2640,0 2880,25 L2880,60 L0,60 Z"/>
+            </svg>
+        </div>
+
+        <!-- ======== STEP 2: ランチ ======== -->
+        <div class="timeline-item">
+            <div class="timeline-dot dot-lunch">🍽️</div>
+            <div class="card lunch-section">
+                <div class="card-header">
+                    <span class="card-time">12:30〜</span>
+                    <span class="card-title">STEP 2 ー ランチタイム</span>
+                </div>
+                <div class="card-body">
+                    <p style="color:rgba(224,240,255,0.7); margin-bottom:20px; font-size:0.9rem;">
+                        映画の余韻に浸りながら、横浜の美味しいランチを楽しもう！<br>
+                        3つのジャンルからお好みで選べます。
+                    </p>
+
+                    <!-- 焼肉 -->
+                    <div class="lunch-option">
+                        <div class="lunch-option-header">
+                            <div class="lunch-icon icon-yakiniku">🥩</div>
+                            <div>
+                                <h4>焼肉</h4>
+                                <span class="lunch-tag tag-popular">大人気</span>
+                            </div>
+                        </div>
+                        <div class="shop-grid">
+                            <!-- GRANDELA -->
+                            <div class="shop-card">
+                                <a href="https://grandela.owst.jp/" target="_blank">
+                                    <img class="shop-card-img" src="https://cdn.r-corona.jp/prd.rb.r-corona.jp/assets/site_files/wvnjis1x/21710066/e55q_w1140h600.jpg" alt="焼肉 GRANDELA プロジェクションマッピング">
+                                    <div class="shop-card-body">
+                                        <div class="shop-card-name">焼肉 GRANDELA</div>
+                                        <div class="shop-card-desc">天井のプロジェクションマッピングで非日常体験！A5ランク黒毛和牛をエンタメ空間で</div>
+                                        <div class="shop-card-access">📍 新高島駅すぐ／横浜グランゲート1F</div>
+                                        <span class="shop-card-link">公式サイトを見る →</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- Kintan -->
+                            <div class="shop-card">
+                                <a href="https://kintan.restaurant/" target="_blank">
+                                    <img class="shop-card-img" src="https://kintan.restaurant/images/contents/top/top_mainvisual_image01.jpg" alt="横浜焼肉 Kintan">
+                                    <div class="shop-card-body">
+                                        <div class="shop-card-name">横浜焼肉 Kintan</div>
+                                        <div class="shop-card-desc">高さ6mの吹き抜け"GREEN ROOM"で。A4・A5黒毛和牛を30日熟成で提供</div>
+                                        <div class="shop-card-access">📍 NEWoMan横浜 10F（横浜駅直結）</div>
+                                        <span class="shop-card-link">公式サイトを見る →</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- 大徳壽 -->
+                            <div class="shop-card">
+                                <a href="https://daitokujyu.com/minato-mirai/" target="_blank">
+                                    <img class="shop-card-img" src="https://daitokujyu.com/wp-content/uploads/2022/01/home_slide01a.jpg" alt="大徳壽">
+                                    <div class="shop-card-body">
+                                        <div class="shop-card-name">大徳壽（だいとくじゅ）</div>
+                                        <div class="shop-card-desc">横浜で創業50年の老舗。みなとみらいの絶景と厳選和牛が楽しめる</div>
+                                        <div class="shop-card-access">📍 コレットマーレ7F（桜木町駅 徒歩1分）</div>
+                                        <span class="shop-card-link">公式サイトを見る →</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- ビーフキッチン -->
+                            <div class="shop-card">
+                                <a href="https://beef-kitchen.jp/yokohama/" target="_blank">
+                                    <img class="shop-card-img" src="https://beef-kitchen.jp/prd/wordpress/wp-content/uploads/2025/12/640x640_rect_148834436-600x400.jpg" alt="ビーフキッチン横浜店">
+                                    <div class="shop-card-body">
+                                        <div class="shop-card-name">ビーフキッチン横浜店</div>
+                                        <div class="shop-card-desc">上質な黒毛和牛をカジュアルに。温かみのある木の空間で特級赤身肉を堪能</div>
+                                        <div class="shop-card-access">📍 横浜駅きた西口 徒歩2分</div>
+                                        <span class="shop-card-link">公式サイトを見る →</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ラーメン -->
+                    <div class="lunch-option" style="margin-top:18px;">
+                        <div class="lunch-option-header">
+                            <div class="lunch-icon icon-ramen">🍜</div>
+                            <div>
+                                <h4>ラーメン</h4>
+                                <span class="lunch-tag tag-classic">横浜の王道</span>
+                            </div>
+                        </div>
+                        <div class="shop-grid">
+                            <!-- 吉村家 -->
+                            <div class="shop-card">
+                                <a href="http://ieke1.com/" target="_blank">
+                                    <img class="shop-card-img" src="https://daitokujyu.com/wp-content/uploads/2022/01/home_slide03a.jpg" alt="家系総本山 吉村家"
+                                         style="background:linear-gradient(135deg,#8B4513,#D2691E); object-fit:cover;"
+                                         onerror="this.style.background='linear-gradient(135deg,#8B4513,#D2691E)'; this.alt='吉村家'; this.src='';">
+                                    <div class="shop-card-body">
+                                        <div class="shop-card-name">家系総本山 吉村家</div>
+                                        <div class="shop-card-desc">横浜家系ラーメンの聖地！1974年創業。濃厚クリーミーな豚骨醤油は唯一無二</div>
+                                        <div class="shop-card-access">📍 横浜駅西口 徒歩5分（岡野町）</div>
+                                        <span class="shop-card-link">公式サイトを見る →</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- 浜虎 -->
+                            <div class="shop-card">
+                                <a href="https://hamatora.co.jp/pages/hamatora-yokohama" target="_blank">
+                                    <img class="shop-card-img" src="https://cdn.shopify.com/s/files/1/0509/9546/2293/files/yoko-head-1.jpg" alt="麺場 浜虎">
+                                    <div class="shop-card-body">
+                                        <div class="shop-card-name">麺場 浜虎</div>
+                                        <div class="shop-card-desc">鶏白湯が絶品。モダンで清潔な店内は女性にも好評。朝8時から営業！</div>
+                                        <div class="shop-card-access">📍 横浜駅西口 鶴屋町（徒歩5分）</div>
+                                        <span class="shop-card-link">公式サイトを見る →</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ハンバーグ -->
+                    <div class="lunch-option" style="margin-top:18px;">
+                        <div class="lunch-option-header">
+                            <div class="lunch-icon icon-hamburg">🍳</div>
+                            <div>
+                                <h4>ハンバーグ</h4>
+                                <span class="lunch-tag tag-family">家族で安心</span>
+                            </div>
+                        </div>
+                        <div class="shop-grid">
+                            <!-- ハングリータイガー -->
+                            <div class="shop-card">
+                                <a href="https://hungrytiger.co.jp/" target="_blank">
+                                    <img class="shop-card-img" src="https://hungrytiger.co.jp/common/img/top/menu_01.jpg" alt="ハングリータイガー ハンバーグ">
+                                    <div class="shop-card-body">
+                                        <div class="shop-card-name">ハングリータイガー</div>
+                                        <div class="shop-card-desc">800度の炭火で焼く絶品ハンバーグ！目の前で仕上げるパフォーマンスも楽しい</div>
+                                        <div class="shop-card-access">📍 横浜モアーズ 8F（横浜駅前）</div>
+                                        <span class="shop-card-link">公式サイトを見る →</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- 洋食キムラ -->
+                            <div class="shop-card">
+                                <a href="https://yo-kimura.com/" target="_blank">
+                                    <img class="shop-card-img" src="https://yo-kimura.com/wp-content/uploads/2020/05/%E3%83%8F%E3%83%B3%E3%83%90%E3%83%BC%E3%82%B0%E3%81%82%E3%81%A4%E3%81%82%E3%81%A4.jpg" alt="洋食キムラ ハンバーグ">
+                                    <div class="shop-card-body">
+                                        <div class="shop-card-name">洋食キムラ 野毛店</div>
+                                        <div class="shop-card-desc">創業80年超の老舗洋食屋。鉄板のアツアツデミグラスハンバーグが絶品</div>
+                                        <div class="shop-card-access">📍 野毛エリア（桜木町駅 徒歩8分）</div>
+                                        <span class="shop-card-link">公式サイトを見る →</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="note-box">
+                        <span class="note-box-icon">⚓</span>
+                        <span>映画館を<strong>横浜ブルク13</strong>にすれば、桜木町周辺でランチもスムーズ！みなとみらいエリアに徒歩で移動できます。</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== Wave between sections ===== -->
+        <div class="wave-divider wave-gold" style="margin: -20px 0 -20px -45px; width: calc(100% + 45px);">
+            <svg viewBox="0 0 2880 60" preserveAspectRatio="none">
+                <path d="M0,35 C200,5 400,55 600,25 C800,55 1000,5 1200,35 C1400,5 1600,55 1800,25 C2000,55 2200,5 2400,35 C2600,5 2880,55 2880,35 L2880,60 L0,60 Z"/>
+            </svg>
+        </div>
+
+        <!-- ======== STEP 3: カフェ＆スイーツ ======== -->
+        <div class="timeline-item">
+            <div class="timeline-dot dot-cafe">🍰</div>
+            <div class="card cafe-section">
+                <div class="card-header">
+                    <span class="card-time">14:30〜</span>
+                    <span class="card-title">STEP 3 ー カフェ＆スイーツ</span>
+                </div>
+                <div class="card-body">
+                    <p style="color:rgba(224,240,255,0.7); margin-bottom:20px; font-size:0.9rem;">
+                        ランチの後は、おしゃれなカフェでまったりタイム。<br>
+                        10代の娘さんもお母さんも大満足の映えスポットへ！
+                    </p>
+                    <div class="spot-grid">
+                        <!-- 果実園リーベル -->
+                        <div class="spot-card">
+                            <a href="https://kajitsuen.jp/" target="_blank">
+                                <img class="spot-card-img" src="https://kajitsuen.jp/wp-content/uploads/parfait3.jpg" alt="果実園リーベル フルーツパフェ">
+                                <div class="spot-card-body">
+                                    <span class="spot-category cat-cafe">カフェ</span>
+                                    <h4>果実園リーベル</h4>
+                                    <p>フルーツ8割のパフェが大人気！目利きオーナー厳選の果実を追熟して提供</p>
+                                    <small style="color:rgba(224,240,255,0.4);">📍 ランドマークプラザ 5F</small><br>
+                                    <span class="spot-link">公式サイトを見る →</span>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- 湘南パンケーキ -->
+                        <div class="spot-card">
+                            <a href="https://shounan-pancake.jp/yokohama/" target="_blank">
+                                <img class="spot-card-img" src="https://shounan-pancake.jp/yokohama/wp-content/uploads/sites/3/2025/08/%E3%83%95%E3%83%AC%E3%83%83%E3%82%B7%E3%83%A5%E8%8B%BA%E3%83%91%E3%83%B3%E3%82%B1%E3%83%BC%E3%82%AD_0.jpg" alt="湘南パンケーキ 苺パンケーキ">
+                                <div class="spot-card-body">
+                                    <span class="spot-category cat-cafe">カフェ</span>
+                                    <h4>湘南パンケーキ</h4>
+                                    <p>ふわっふわの苺パンケーキが絶品！みなとみらいの景色を見ながら至福のひととき</p>
+                                    <small style="color:rgba(224,240,255,0.4);">📍 ランドマークプラザ内</small><br>
+                                    <span class="spot-link">公式サイトを見る →</span>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- アニヴェルセルカフェ -->
+                        <div class="spot-card">
+                            <a href="https://cafe.anniversaire.co.jp/minatomirai/" target="_blank">
+                                <img class="spot-card-img" src="https://cafe.anniversaire.co.jp/assets/uploads/0114_yoko_shugo4rs-1-940x627.jpg" alt="アニヴェルセルカフェ アフタヌーンティー">
+                                <div class="spot-card-body">
+                                    <span class="spot-category cat-cafe">カフェ</span>
+                                    <h4>アニヴェルセルカフェ</h4>
+                                    <p>華やかなアフタヌーンティーが楽しめる！海辺の非日常フレンチカフェ</p>
+                                    <small style="color:rgba(224,240,255,0.4);">📍 みなとみらい新港エリア</small><br>
+                                    <span class="spot-link">公式サイトを見る →</span>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- 象の鼻テラス -->
+                        <div class="spot-card">
+                            <a href="https://zounohana.com/" target="_blank">
+                                <img class="spot-card-img" src="https://zounohana.com/wp-content/uploads/2025/06/DSC03638-1-scaled-1-150x150.jpg" alt="象の鼻テラス"
+                                     style="object-fit:cover;"
+                                     onerror="this.style.background='linear-gradient(135deg,#89f7fe,#66a6ff)'; this.src='';">
+                                <div class="spot-card-body">
+                                    <span class="spot-category cat-spot">映えスポット</span>
+                                    <h4>象の鼻テラス</h4>
+                                    <p>海辺のアートスポット。名物ゾウさんソフトクリームはSNS映え抜群！</p>
+                                    <small style="color:rgba(224,240,255,0.4);">📍 象の鼻パーク内</small><br>
+                                    <span class="spot-link">公式サイトを見る →</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== Wave between sections ===== -->
+        <div class="wave-divider" style="margin: -20px 0 -20px -45px; width: calc(100% + 45px);">
+            <svg viewBox="0 0 2880 60" preserveAspectRatio="none">
+                <path d="M0,20 C300,50 600,10 900,40 C1200,10 1500,50 1800,20 C2100,50 2400,10 2700,40 C2800,50 2880,30 2880,20 L2880,60 L0,60 Z"/>
+            </svg>
+        </div>
+
+        <!-- ======== STEP 4: ショッピング＆おでかけ ======== -->
+        <div class="timeline-item">
+            <div class="timeline-dot dot-shopping">🛍️</div>
+            <div class="card shopping-section">
+                <div class="card-header">
+                    <span class="card-time">16:00〜</span>
+                    <span class="card-title">STEP 4 ー ショッピング＆散策</span>
+                </div>
+                <div class="card-body">
+                    <p style="color:rgba(224,240,255,0.7); margin-bottom:20px; font-size:0.9rem;">
+                        母娘で楽しめるショッピング＆おでかけスポット！<br>
+                        おしゃれな雑貨やファッションを見て回ろう。
+                    </p>
+                    <div class="spot-grid">
+                        <!-- 赤レンガ倉庫 -->
+                        <div class="spot-card">
+                            <a href="https://www.yokohama-akarenga.jp/" target="_blank">
+                                <img class="spot-card-img" src="https://www.yokohama-akarenga.jp/images/event/1/1164-640x426.jpg?21881" alt="横浜赤レンガ倉庫 イベント">
+                                <div class="spot-card-body">
+                                    <span class="spot-category cat-shop">ショッピング</span>
+                                    <h4>横浜赤レンガ倉庫</h4>
+                                    <p>おしゃれな雑貨やアクセサリーがいっぱい！季節イベントも楽しめる定番スポット</p>
+                                    <small style="color:rgba(224,240,255,0.4);">📍 馬車道駅・日本大通り駅から徒歩</small><br>
+                                    <span class="spot-link">公式サイトを見る →</span>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- MARINE & WALK -->
+                        <div class="spot-card">
+                            <a href="https://marineandwalk.jp/" target="_blank">
+                                <img class="spot-card-img" src="https://marineandwalk.jp/manage/wp-content/themes/ac_temp/assets/img/top/about1.jpg" alt="MARINE & WALK YOKOHAMA">
+                                <div class="spot-card-body">
+                                    <span class="spot-category cat-shop">ショッピング</span>
+                                    <h4>MARINE & WALK</h4>
+                                    <p>海沿いのオープンエアモール。トレンドファッション＆映えグルメが充実</p>
+                                    <small style="color:rgba(224,240,255,0.4);">📍 みなとみらい・赤レンガ倉庫隣</small><br>
+                                    <span class="spot-link">公式サイトを見る →</span>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- ハンマーヘッド -->
+                        <div class="spot-card">
+                            <a href="https://www.hammerhead.co.jp/" target="_blank">
+                                <img class="spot-card-img" src="https://hammerhead.co.jp/uploads/images/resized/1280x563/hammerhead/000002/000002/90955f91.jpg" alt="横浜ハンマーヘッド">
+                                <div class="spot-card-body">
+                                    <span class="spot-category cat-spot">散策スポット</span>
+                                    <h4>横浜ハンマーヘッド</h4>
+                                    <p>話題のスイーツやお土産が集まる新スポット。海を眺めながらお散歩も</p>
+                                    <small style="color:rgba(224,240,255,0.4);">📍 みなとみらい新港地区</small><br>
+                                    <span class="spot-link">公式サイトを見る →</span>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- コスモワールド -->
+                        <div class="spot-card">
+                            <a href="https://cosmoworld.jp/" target="_blank">
+                                <img class="spot-card-img" src="https://cosmoworld.jp/wp-content/uploads/2025/04/fv-image01.jpg" alt="よこはまコスモワールド 大観覧車">
+                                <div class="spot-card-body">
+                                    <span class="spot-category cat-spot">観覧車</span>
+                                    <h4>コスモワールド</h4>
+                                    <p>夕暮れの大観覧車「コスモクロック21」は絶景！夜景で1日の締めくくりに</p>
+                                    <small style="color:rgba(224,240,255,0.4);">📍 みなとみらい（入園無料）</small><br>
+                                    <span class="spot-link">公式サイトを見る →</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /timeline -->
+
+    <!-- ===== Wave before Schedule ===== -->
+    <div class="wave-divider wave-teal" style="margin-bottom: 10px;">
+        <svg viewBox="0 0 2880 60" preserveAspectRatio="none">
+            <path d="M0,30 C360,60 720,0 1080,30 C1440,60 1800,0 2160,30 C2520,60 2880,0 2880,30 L2880,60 L0,60 Z"/>
+        </svg>
+    </div>
+
+    <!-- Schedule Summary -->
+    <div class="schedule-summary">
+        <h3>⚓ 1日のスケジュールまとめ 🚢</h3>
+        <div class="schedule-row">
+            <span class="schedule-time-badge">09:30</span>
+            <span class="schedule-icon">🚃</span>
+            <span class="schedule-desc">
+                <strong>横浜エリアに到着</strong>
+                <small>桜木町駅 or みなとみらい駅</small>
+            </span>
+        </div>
+        <div class="schedule-row">
+            <span class="schedule-time-badge">10:00</span>
+            <span class="schedule-icon">🎬</span>
+            <span class="schedule-desc">
+                <strong>映画「スペシャルズ」鑑賞</strong>
+                <small>横浜ブルク13（約110分）</small>
+            </span>
+        </div>
+        <div class="schedule-row">
+            <span class="schedule-time-badge">12:00</span>
+            <span class="schedule-icon">🚶</span>
+            <span class="schedule-desc">
+                <strong>映画終了 → ランチへ移動</strong>
+                <small>徒歩でみなとみらいエリアへ</small>
+            </span>
+        </div>
+        <div class="schedule-row">
+            <span class="schedule-time-badge">12:30</span>
+            <span class="schedule-icon">🍽️</span>
+            <span class="schedule-desc">
+                <strong>ランチ（焼肉 / ラーメン / ハンバーグ）</strong>
+                <small>家族で相談して決めよう！</small>
+            </span>
+        </div>
+        <div class="schedule-row">
+            <span class="schedule-time-badge">14:30</span>
+            <span class="schedule-icon">🍰</span>
+            <span class="schedule-desc">
+                <strong>カフェ＆スイーツタイム</strong>
+                <small>果実園リーベル or 湘南パンケーキ など</small>
+            </span>
+        </div>
+        <div class="schedule-row">
+            <span class="schedule-time-badge">16:00</span>
+            <span class="schedule-icon">🛍️</span>
+            <span class="schedule-desc">
+                <strong>ショッピング＆散策</strong>
+                <small>赤レンガ倉庫 → MARINE & WALK → ハンマーヘッド</small>
+            </span>
+        </div>
+        <div class="schedule-row">
+            <span class="schedule-time-badge">17:30</span>
+            <span class="schedule-icon">🎡</span>
+            <span class="schedule-desc">
+                <strong>コスモワールドで夕景を満喫</strong>
+                <small>大観覧車から横浜の夕焼けを！</small>
+            </span>
+        </div>
+        <div class="schedule-row">
+            <span class="schedule-time-badge">18:30</span>
+            <span class="schedule-icon">🏠</span>
+            <span class="schedule-desc">
+                <strong>帰路へ</strong>
+                <small>最高の1日をありがとう！</small>
+            </span>
+        </div>
+    </div>
+
+</div><!-- /container -->
+
+<!-- ===== Bottom Wave ===== -->
+<div class="wave-divider wave-teal" style="margin-top: 20px;">
+    <svg viewBox="0 0 2880 60" preserveAspectRatio="none">
+        <path d="M0,20 C360,50 720,0 1080,30 C1440,50 1800,10 2160,40 C2520,10 2880,50 2880,20 L2880,60 L0,60 Z"/>
+    </svg>
+</div>
+
+<footer class="footer">
+    <div class="footer-waves">⚓ 🌊 🚢 🌊 ⚓</div>
+    <p>3人で過ごす最高の土曜日になりますように！</p>
+    <div class="rope-border" style="margin: 15px auto;"></div>
+    <p style="margin-top:8px; font-size:0.7rem;">
+        映画公式サイト：<a href="https://eiga-specials.com/" target="_blank">eiga-specials.com</a>
+    </p>
+</footer>
+
+<script>
+    // Create ocean bubbles
+    const bubblesContainer = document.getElementById('bubbles');
+    for (let i = 0; i < 25; i++) {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        const size = 8 + Math.random() * 40;
+        bubble.style.width = size + 'px';
+        bubble.style.height = size + 'px';
+        bubble.style.left = Math.random() * 100 + '%';
+        bubble.style.animationDuration = (8 + Math.random() * 15) + 's';
+        bubble.style.animationDelay = Math.random() * 10 + 's';
+        bubblesContainer.appendChild(bubble);
+    }
+</script>
+
+</body>
+</html>

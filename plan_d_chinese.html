@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3/7(土) 中華街プラン - Editorial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --white: #fafafa;
+            --off-white: #f3f1ee;
+            --black: #1a1a1a;
+            --dark: #2c2c2c;
+            --gold: #c9a96e;
+            --gold-light: #dfc89a;
+            --deep-red: #8b2332;
+            --text-muted: #777;
+            --text-light: #999;
+            --border: #e5e0d8;
+            --shadow: 0 2px 20px rgba(0,0,0,0.06);
+            --shadow-hover: 0 8px 40px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+            background: var(--white);
+            color: var(--black);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.8;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* === Typography === */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', 'Noto Sans JP', serif;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        /* === Top Bar === */
+        .top-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 14px 40px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            background: #fff;
+        }
+        .top-bar span { color: var(--gold); margin: 0 12px; }
+
+        /* === Hero Section === */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            min-height: 500px;
+            max-height: 750px;
+            overflow: hidden;
+        }
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.1) 0%,
+                rgba(0,0,0,0.0) 30%,
+                rgba(0,0,0,0.3) 60%,
+                rgba(0,0,0,0.75) 100%
+            );
+        }
+        .hero-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 60px;
+            color: #fff;
+        }
+        .hero-date {
+            display: inline-block;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            border: 1px solid rgba(255,255,255,0.5);
+            padding: 6px 20px;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.9);
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 30px rgba(0,0,0,0.3);
+        }
+        .hero-subtitle {
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.85);
+        }
+        .hero-logo {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            max-height: 50px;
+            opacity: 0.9;
+        }
+
+        /* === Container === */
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* === Section Divider === */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 80px 0 50px;
+        }
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+        .section-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            white-space: nowrap;
+        }
+
+        /* === Section Header === */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-header h2 {
+            font-size: 2.4rem;
+            margin-bottom: 8px;
+            color: var(--black);
+        }
+        .section-header .section-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        .section-header .time-badge {
+            display: inline-block;
+            margin-bottom: 12px;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            color: var(--deep-red);
+            border: 1px solid var(--deep-red);
+            padding: 4px 16px;
+        }
+
+        /* === Gold Accent Line === */
+        .gold-line {
+            width: 50px;
+            height: 2px;
+            background: var(--gold);
+            margin: 16px auto;
+        }
+
+        /* === Movie Section === */
+        .movie-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border: 1px solid var(--border);
+            margin-bottom: 40px;
+        }
+        .movie-detail-item {
+            padding: 22px 28px;
+            border-bottom: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+        }
+        .movie-detail-item:nth-child(even) { border-right: none; }
+        .movie-detail-item:nth-last-child(-n+2) { border-bottom: none; }
+        .movie-detail-label {
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .movie-detail-value {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        .movie-synopsis {
+            background: var(--off-white);
+            padding: 35px 40px;
+            margin: 40px 0;
+            border-left: 3px solid var(--gold);
+            font-size: 0.95rem;
+            line-height: 2;
+            color: var(--dark);
+        }
+        .movie-synopsis strong {
+            color: var(--deep-red);
+            font-weight: 700;
+        }
+        .movie-synopsis .theme-song {
+            display: block;
+            margin-top: 16px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* === Cast Grid === */
+        .cast-section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.75rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        .cast-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        .cast-item {
+            text-align: center;
+        }
+        .cast-item img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            filter: grayscale(20%);
+            transition: filter 0.3s;
+            border: 2px solid var(--border);
+            margin-bottom: 10px;
+        }
+        .cast-item:hover img { filter: grayscale(0%); }
+        .cast-name {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 2px;
+        }
+        .cast-role {
+            font-size: 0.7rem;
+            color: var(--text-light);
+        }
+
+        /* === Theater Info === */
+        .theater-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            background: var(--black);
+            color: #fff;
+            padding: 24px 32px;
+            margin: 40px 0;
+        }
+        .theater-info-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .theater-icon {
+            font-size: 1.6rem;
+        }
+        .theater-label {
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 2px;
+        }
+        .theater-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        .theater-sub {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.5);
+            margin-top: 2px;
+        }
+
+        .ticket-cta {
+            display: inline-block;
+            background: var(--deep-red);
+            color: #fff;
+            padding: 12px 32px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: background 0.3s;
+        }
+        .ticket-cta:hover { background: #a02e40; }
+
+        .note-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: var(--off-white);
+            padding: 20px 24px;
+            margin-top: 20px;
+            font-size: 0.82rem;
+            color: var(--dark);
+            border: 1px solid var(--border);
+        }
+        .note-box-icon { font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+        .note-box strong { color: var(--deep-red); }
+
+        /* === Lunch Section === */
+        .lunch-category {
+            margin-bottom: 50px;
+        }
+        .lunch-category-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        .lunch-category-icon {
+            font-size: 1.8rem;
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--off-white);
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        .lunch-category-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        .lunch-tag {
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            display: inline-block;
+            margin-top: 2px;
+        }
+        .tag-popular { background: rgba(139,35,50,0.1); color: var(--deep-red); }
+        .tag-classic { background: rgba(201,169,110,0.15); color: #9a7d42; }
+        .tag-family { background: rgba(139,35,50,0.08); color: #a0576a; }
+
+        /* === Shop Cards === */
+        .shop-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .shop-card {
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: #fff;
+        }
+        .shop-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+        .shop-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .shop-card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            background: var(--off-white);
+            transition: transform 0.5s;
+        }
+        .shop-card:hover .shop-card-img { transform: scale(1.03); }
+        .shop-card-img-wrap {
+            overflow: hidden;
+        }
+        .shop-card-body {
+            padding: 20px;
+        }
+        .shop-card-name {
+            font-family: 'Playfair Display', 'Noto Sans JP', serif;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 8px;
+            color: var(--black);
+        }
+        .shop-card-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        .shop-card-access {
+            font-size: 0.72rem;
+            color: var(--text-light);
+            margin-top: 10px;
+        }
+        .shop-card-link-text {
+            display: inline-block;
+            margin-top: 12px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 700;
+            border-bottom: 1px solid var(--gold);
+            padding-bottom: 2px;
+            transition: color 0.3s, border-color 0.3s;
+        }
+        .shop-card:hover .shop-card-link-text { color: var(--deep-red); border-color: var(--deep-red); }
+
+        /* === Spot Grid (Cafe & Shopping) === */
+        .spot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+        .spot-card {
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: #fff;
+        }
+        .spot-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+        .spot-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .spot-card-img-wrap { overflow: hidden; }
+        .spot-card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            background: var(--off-white);
+            transition: transform 0.5s;
+        }
+        .spot-card:hover .spot-card-img { transform: scale(1.03); }
+        .spot-card-body {
+            padding: 20px;
+        }
+        .spot-category {
+            display: inline-block;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 3px 10px;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .cat-cafe { background: rgba(201,169,110,0.15); color: #9a7d42; }
+        .cat-shop { background: rgba(26,26,26,0.08); color: var(--black); }
+        .cat-spot { background: rgba(139,35,50,0.08); color: var(--deep-red); }
+        .spot-card-body h4 {
+            font-family: 'Playfair Display', 'Noto Sans JP', serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--black);
+        }
+        .spot-card-body p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+        .spot-card-body small {
+            display: block;
+            font-size: 0.72rem;
+            color: var(--text-light);
+            margin-top: 8px;
+        }
+        .spot-link {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 700;
+            border-bottom: 1px solid var(--gold);
+            padding-bottom: 2px;
+            transition: color 0.3s, border-color 0.3s;
+        }
+        .spot-card:hover .spot-link { color: var(--deep-red); border-color: var(--deep-red); }
+
+        /* === Schedule Section === */
+        .schedule-section {
+            background: var(--black);
+            color: #fff;
+            padding: 80px 40px;
+            margin-top: 80px;
+        }
+        .schedule-section .container { max-width: 980px; margin: 0 auto; }
+        .schedule-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .schedule-header h2 {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .schedule-header .gold-line {
+            background: var(--gold);
+        }
+        .schedule-header p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+            margin-top: 12px;
+        }
+        .schedule-timeline {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .schedule-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .schedule-row:last-child { border-bottom: none; }
+        .schedule-time {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            min-width: 70px;
+            flex-shrink: 0;
+            padding-top: 2px;
+        }
+        .schedule-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            flex-shrink: 0;
+            margin-top: 8px;
+            position: relative;
+        }
+        .schedule-dot::after {
+            content: '';
+            position: absolute;
+            top: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 50px;
+            background: rgba(201,169,110,0.2);
+        }
+        .schedule-row:last-child .schedule-dot::after { display: none; }
+        .schedule-text strong {
+            display: block;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+        .schedule-text small {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* === Footer === */
+        .footer {
+            text-align: center;
+            padding: 50px 40px;
+            border-top: 1px solid var(--border);
+            background: #fff;
+        }
+        .footer-message {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--dark);
+            margin-bottom: 16px;
+        }
+        .footer-link {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+        .footer-link a {
+            color: var(--gold);
+            text-decoration: none;
+            border-bottom: 1px solid var(--gold-light);
+        }
+        .footer-link a:hover { color: var(--deep-red); border-color: var(--deep-red); }
+
+        /* === Intro Text === */
+        .intro-text {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 20px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.9;
+        }
+
+        /* === Responsive === */
+        @media (max-width: 768px) {
+            .hero { height: 60vh; min-height: 380px; }
+            .hero-content { padding: 30px 24px; }
+            .hero h1 { font-size: 2rem; }
+            .hero-logo { max-height: 36px; right: 20px; top: 20px; }
+            .container { padding: 0 20px; }
+            .section-header h2 { font-size: 1.8rem; }
+            .movie-details { grid-template-columns: 1fr; }
+            .movie-detail-item { border-right: none; }
+            .movie-detail-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+            .movie-detail-item:last-child { border-bottom: none; }
+            .cast-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+            .cast-item img { width: 70px; height: 70px; }
+            .shop-grid { grid-template-columns: 1fr; }
+            .spot-grid { grid-template-columns: 1fr; }
+            .theater-info { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .movie-synopsis { padding: 24px; }
+            .schedule-section { padding: 60px 20px; }
+            .schedule-row { gap: 16px; }
+            .top-bar { padding: 12px 20px; font-size: 0.6rem; letter-spacing: 3px; }
+            .section-divider { margin: 60px 0 40px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.6rem; }
+            .hero-subtitle { font-size: 0.85rem; }
+            .section-header h2 { font-size: 1.5rem; }
+            .cast-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar">
+    YOKOHAMA <span>&mdash;</span> CHINATOWN OUTING GUIDE <span>&mdash;</span> 2026
+</div>
+
+<!-- Hero: Full-width movie key visual -->
+<section class="hero">
+    <img class="hero-img" src="https://eiga-specials.com/assets/images/top/kv3.jpg" alt="スペシャルズ キービジュアル">
+    <div class="hero-overlay"></div>
+    <img class="hero-logo" src="https://eiga-specials.com/assets/images/top/kv_logo.png" alt="スペシャルズ ロゴ">
+    <div class="hero-content">
+        <div class="hero-date">2026.03.07 Saturday</div>
+        <h1>中華街・中華料理プラン</h1>
+        <p class="hero-subtitle">映画 &times; 横浜中華街 &times; 食べ歩き &times; 山下公園散策 &mdash; 最高の土曜日を。</p>
+    </div>
+</section>
+
+<div class="container">
+
+    <!-- ======================================== -->
+    <!--  CHAPTER 01: 映画鑑賞                     -->
+    <!-- ======================================== -->
+    <div class="section-divider">
+        <span class="section-number">Chapter 01</span>
+    </div>
+
+    <div class="section-header">
+        <span class="time-badge">10:00 &mdash;</span>
+        <h2>Movie</h2>
+        <div class="gold-line"></div>
+        <p class="section-subtitle">映画鑑賞 &mdash; 今いちばん見たい一本を家族で。</p>
+    </div>
+
+    <!-- Movie Details Grid -->
+    <div class="movie-details">
+        <div class="movie-detail-item">
+            <div class="movie-detail-label">Title</div>
+            <div class="movie-detail-value">スペシャルズ THE SPECIALS</div>
+        </div>
+        <div class="movie-detail-item">
+            <div class="movie-detail-label">Release</div>
+            <div class="movie-detail-value">2026年3月6日（金）〜</div>
+        </div>
+        <div class="movie-detail-item">
+            <div class="movie-detail-label">Genre</div>
+            <div class="movie-detail-value">ダンスアクション・エンタメ</div>
+        </div>
+        <div class="movie-detail-item">
+            <div class="movie-detail-label">Runtime</div>
+            <div class="movie-detail-value">110分</div>
+        </div>
+    </div>
+
+    <!-- Synopsis -->
+    <div class="movie-synopsis">
+        <strong>殺し屋たちがダンス！？</strong><br><br>
+        伝説の殺し屋たちが「ダンス経験がある」という理由で集められる。裏社会のトップを暗殺するため、ダンス大会への出場を目指してチームを結成！しかし実はド素人で、ダンス教室に通い始めるも問題を起こして破門...。児童養護施設のダンス少女・明香の助けを借りながら、個性的な5人が「スペシャルな」チームへと成長していく！
+        <span class="theme-song">主題歌：Snow Man「オドロウゼ！」</span>
+    </div>
+
+    <!-- Cast -->
+    <div class="cast-section-title">Main Cast</div>
+    <div class="cast-grid">
+        <div class="cast-item">
+            <img src="https://eiga-specials.com/assets/images/cast/sakuma-daisuke/pic.jpg" alt="佐久間大介">
+            <div class="cast-name">佐久間大介</div>
+            <div class="cast-role">ダイヤ役</div>
+        </div>
+        <div class="cast-item">
+            <img src="https://eiga-specials.com/assets/images/cast/shiina-kippei/pic.jpg" alt="椎名桔平">
+            <div class="cast-name">椎名桔平</div>
+            <div class="cast-role">熊城役</div>
+        </div>
+        <div class="cast-item">
+            <img src="https://eiga-specials.com/assets/images/cast/nakamoto-yuta/pic.jpg" alt="中本悠太">
+            <div class="cast-name">中本悠太</div>
+            <div class="cast-role">桐生役</div>
+        </div>
+        <div class="cast-item">
+            <img src="https://eiga-specials.com/assets/images/cast/aoyagi-sho/pic.jpg" alt="青柳翔">
+            <div class="cast-name">青柳翔</div>
+            <div class="cast-role">シン役</div>
+        </div>
+        <div class="cast-item">
+            <img src="https://eiga-specials.com/assets/images/cast/ozawa-hitoshi/pic.jpg" alt="小沢仁志">
+            <div class="cast-name">小沢仁志</div>
+            <div class="cast-role">村雨役</div>
+        </div>
+    </div>
+
+    <!-- Theater Info -->
+    <div class="theater-info">
+        <div class="theater-info-left">
+            <div class="theater-icon">🎥</div>
+            <div>
+                <div class="theater-label">Recommended Theater</div>
+                <div class="theater-name">横浜ブルク13</div>
+                <div class="theater-sub">桜木町駅直結</div>
+            </div>
+        </div>
+        <a href="https://eiga-specials.com/ticket/" target="_blank" class="ticket-cta">
+            チケット情報を見る
+        </a>
+    </div>
+
+    <div class="note-box">
+        <span class="note-box-icon">&#9670;</span>
+        <span>
+            他にも <strong>ユナイテッドシネマ みなとみらい</strong>、<strong>TOHOシネマズ上大岡</strong>、<strong>TOHOシネマズららぽーと横浜</strong> でも上映中！<br>
+            公開翌日なので早めの時間がおすすめです。
+        </span>
+    </div>
+
+    <!-- ======================================== -->
+    <!--  CHAPTER 02: ランチ（中華料理）             -->
+    <!-- ======================================== -->
+    <div class="section-divider">
+        <span class="section-number">Chapter 02</span>
+    </div>
+
+    <div class="section-header">
+        <span class="time-badge">12:30 &mdash;</span>
+        <h2>Lunch</h2>
+        <div class="gold-line"></div>
+        <p class="section-subtitle">横浜中華街で本格中華ランチを満喫しよう。</p>
+    </div>
+
+    <p class="intro-text">
+        2つのジャンルからお好みで選べます。<br>老舗の名門レストランから本格専門店まで、中華街の味を堪能！
+    </p>
+
+    <!-- 名門レストラン -->
+    <div class="lunch-category">
+        <div class="lunch-category-header">
+            <div class="lunch-category-icon">🏮</div>
+            <div>
+                <div class="lunch-category-name">Famous Restaurants</div>
+                <span class="lunch-tag tag-popular">中華街の名店</span>
+            </div>
+        </div>
+        <div class="shop-grid">
+            <!-- 萬珍樓 -->
+            <div class="shop-card">
+                <a href="https://www.manchinro.com/" target="_blank">
+                    <div class="shop-card-img-wrap">
+                        <img class="shop-card-img" src="https://www.manchinro.com/mcr-ja/wp-content/themes/mcr/img/shop-list-manchinro.jpg" alt="萬珍樓"
+                             onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)'; this.src='';">
+                    </div>
+                    <div class="shop-card-body">
+                        <div class="shop-card-name">萬珍樓（まんちんろう）</div>
+                        <div class="shop-card-desc">明治25年創業の老舗広東料理。中華街のシンボル的存在</div>
+                        <div class="shop-card-access">📍 中華街大通り</div>
+                        <span class="shop-card-link-text">Official Site &rarr;</span>
+                    </div>
+                </a>
+            </div>
+            <!-- 萬珍樓 點心舗 -->
+            <div class="shop-card">
+                <a href="https://www.manchinro.com/" target="_blank">
+                    <div class="shop-card-img-wrap">
+                        <img class="shop-card-img" src="https://www.manchinro.com/mcr-ja/wp-content/themes/mcr/img/shop-list-tenshimpo.jpg" alt="萬珍樓 點心舗"
+                             onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)'; this.src='';">
+                    </div>
+                    <div class="shop-card-body">
+                        <div class="shop-card-name">萬珍樓 點心舗</div>
+                        <div class="shop-card-desc">萬珍樓の点心専門店。飲茶スタイルで気軽に楽しめる</div>
+                        <div class="shop-card-access">📍 中華街大通り</div>
+                        <span class="shop-card-link-text">Official Site &rarr;</span>
+                    </div>
+                </a>
+            </div>
+            <!-- 菜香新館 -->
+            <div class="shop-card">
+                <a href="https://saikoh-shinkan.com/" target="_blank">
+                    <div class="shop-card-img-wrap">
+                        <img class="shop-card-img" src="https://saikoh-shinkan.com/wp-content/themes/wphina/images/index/main01.jpg" alt="菜香新館"
+                             onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)'; this.src='';">
+                    </div>
+                    <div class="shop-card-body">
+                        <div class="shop-card-name">菜香新館（さいこうしんかん）</div>
+                        <div class="shop-card-desc">広東料理の名店。飲茶コースが大人気</div>
+                        <div class="shop-card-access">📍 中華街</div>
+                        <span class="shop-card-link-text">Official Site &rarr;</span>
+                    </div>
+                </a>
+            </div>
+            <!-- 皇朝 -->
+            <div class="shop-card">
+                <a href="https://www.ko-cho.com/" target="_blank">
+                    <div class="shop-card-img-wrap">
+                        <img class="shop-card-img" src="https://www.ko-cho.com/img/popular/restrant/03.jpg" alt="皇朝"
+                             onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)'; this.src='';">
+                    </div>
+                    <div class="shop-card-body">
+                        <div class="shop-card-name">皇朝（こうちょう）</div>
+                        <div class="shop-card-desc">世界チャンピオンの点心師が作る肉まん＆小籠包</div>
+                        <div class="shop-card-access">📍 中華街大通り</div>
+                        <span class="shop-card-link-text">Official Site &rarr;</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 本格中華 -->
+    <div class="lunch-category">
+        <div class="lunch-category-header">
+            <div class="lunch-category-icon">🥟</div>
+            <div>
+                <div class="lunch-category-name">Authentic Chinese</div>
+                <span class="lunch-tag tag-classic">専門店の味</span>
+            </div>
+        </div>
+        <div class="shop-grid">
+            <!-- 京華樓 -->
+            <div class="shop-card">
+                <a href="https://kyokarou.com/" target="_blank">
+                    <div class="shop-card-img-wrap">
+                        <img class="shop-card-img" src="https://kyokarou.com/cdn/shop/files/kyokarou-mapotofu-2_1024x1024.jpg?v=1615320750" alt="京華樓 麻婆豆腐"
+                             onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)'; this.src='';">
+                    </div>
+                    <div class="shop-card-body">
+                        <div class="shop-card-name">京華樓（きょうかろう）</div>
+                        <div class="shop-card-desc">激辛で有名な四川料理専門店。麻婆豆腐が絶品</div>
+                        <div class="shop-card-access">📍 中華街</div>
+                        <span class="shop-card-link-text">Official Site &rarr;</span>
+                    </div>
+                </a>
+            </div>
+            <!-- 重慶飯店 -->
+            <div class="shop-card">
+                <a href="https://www.jukeihanten.com/" target="_blank">
+                    <div class="shop-card-img-wrap">
+                        <img class="shop-card-img" src="https://www.jukeihanten.com/wp-content/uploads/2023/06/07_%E8%A1%A8%E7%B4%99_2410_%E5%AE%9F_1200900B-20241111110610.jpg" alt="重慶飯店"
+                             onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)'; this.src='';">
+                    </div>
+                    <div class="shop-card-body">
+                        <div class="shop-card-name">重慶飯店</div>
+                        <div class="shop-card-desc">本格四川料理。麻婆豆腐と担々麺が看板メニュー</div>
+                        <div class="shop-card-access">📍 中華街</div>
+                        <span class="shop-card-link-text">Official Site &rarr;</span>
+                    </div>
+                </a>
+            </div>
+            <!-- 京鼎樓 HANARE -->
+            <div class="shop-card">
+                <a href="https://jin-din-rou.net/shoplist/jindinrou-hanare_yokohamafront_tsuruyachou/" target="_blank">
+                    <div class="shop-card-img-wrap">
+                        <img class="shop-card-img" src="https://jin-din-rou.net/wp2025/wp-content/themes/theme/assets/img/top_menu_slide_photo4.webp" alt="京鼎樓 HANARE 小籠包"
+                             onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)'; this.src='';">
+                    </div>
+                    <div class="shop-card-body">
+                        <div class="shop-card-name">京鼎樓 HANARE</div>
+                        <div class="shop-card-desc">台湾発の小籠包専門店。薄皮の中に熱々スープ</div>
+                        <div class="shop-card-access">📍 横浜駅周辺（ザ ヨコハマ フロント）</div>
+                        <span class="shop-card-link-text">Official Site &rarr;</span>
+                    </div>
+                </a>
+            </div>
+            <!-- 彩龍 -->
+            <div class="shop-card">
+                <a href="https://ybsh.sotetsu-hotels.com/restaurants/sairyu/" target="_blank">
+                    <div class="shop-card-img-wrap">
+                        <img class="shop-card-img" src="https://restaurant.ikyu.com/102675/room/102675_01.jpg" alt="彩龍 中国料理"
+                             style="object-fit:cover;"
+                             onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)'; this.src='';">
+                    </div>
+                    <div class="shop-card-body">
+                        <div class="shop-card-name">彩龍（さいりゅう）</div>
+                        <div class="shop-card-desc">横浜ベイシェラトンの中国料理。ホテルならではの上質な広東料理を堪能</div>
+                        <div class="shop-card-access">📍 横浜ベイシェラトン ホテル＆タワーズ 3F</div>
+                        <span class="shop-card-link-text">Official Site &rarr;</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="note-box">
+        <span class="note-box-icon">&#9670;</span>
+        <span>中華街は<strong>週末のお昼時</strong>が特に混み合います。<strong>11:30前</strong>か<strong>13:30以降</strong>に入店するのがスムーズ。予約可能な店は事前予約がおすすめ！食べ歩きとの組み合わせなら、<strong>点心・飲茶系</strong>で軽めにして食べ歩きをメインにするのも◎</span>
+    </div>
+
+    <!-- ======================================== -->
+    <!--  CHAPTER 03: 食べ歩き                     -->
+    <!-- ======================================== -->
+    <div class="section-divider">
+        <span class="section-number">Chapter 03</span>
+    </div>
+
+    <div class="section-header">
+        <span class="time-badge">14:00 &mdash;</span>
+        <h2>Street Food &amp; Sweets</h2>
+        <div class="gold-line"></div>
+        <p class="section-subtitle">中華街名物の食べ歩きグルメを満喫！</p>
+    </div>
+
+    <p class="intro-text">
+        中華街ならではの食べ歩きは外せない！<br>アツアツの小籠包にふわふわの中華まん、名物グルメを堪能しよう。
+    </p>
+
+    <div class="spot-grid">
+        <!-- 老維新 -->
+        <div class="spot-card">
+            <a href="https://rouishin.com/" target="_blank">
+                <div class="spot-card-img-wrap">
+                    <img class="spot-card-img" src="https://makeshop-multi-images.akamaized.net/rouishin/itemimages/0000000029093_isWagSL.jpg" alt="老維新 パンダまん"
+                         onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)'; this.src='';">
+                </div>
+                <div class="spot-card-body">
+                    <span class="spot-category cat-cafe">食べ歩き</span>
+                    <h4>老維新（ろういしん）</h4>
+                    <p>パンダまんが大人気！SNS映え抜群の中華まん</p>
+                    <small>📍 中華街大通り</small>
+                    <span class="spot-link">Official Site &rarr;</span>
+                </div>
+            </a>
+        </div>
+        <!-- 江戸清 -->
+        <div class="spot-card">
+            <a href="https://www.edosei.com/" target="_blank">
+                <div class="spot-card-img-wrap">
+                    <img class="spot-card-img" src="https://gigaplus.makeshop.jp/gmosp655/img2020/slide1_pc.jpg" alt="江戸清 巨大肉まん"
+                         onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)'; this.src='';">
+                </div>
+                <div class="spot-card-body">
+                    <span class="spot-category cat-cafe">食べ歩き</span>
+                    <h4>江戸清（えどせい）</h4>
+                    <p>巨大肉まんが名物！1個で大満足のボリューム</p>
+                    <small>📍 中華街大通り</small>
+                    <span class="spot-link">Official Site &rarr;</span>
+                </div>
+            </a>
+        </div>
+        <!-- 鵬天閣 -->
+        <div class="spot-card">
+            <a href="https://houtenkaku.com/" target="_blank">
+                <div class="spot-card-img-wrap">
+                    <img class="spot-card-img" src="https://houtenkaku.com/wp/wp-content/themes/houtenkaku/img/top/about-img1-pc.jpg" alt="鵬天閣 焼き小籠包"
+                         onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)'; this.src='';">
+                </div>
+                <div class="spot-card-body">
+                    <span class="spot-category cat-cafe">食べ歩き</span>
+                    <h4>鵬天閣（ほうてんかく）</h4>
+                    <p>焼き小籠包の行列店。あつあつジューシーが最高</p>
+                    <small>📍 中華街</small>
+                    <span class="spot-link">Official Site &rarr;</span>
+                </div>
+            </a>
+        </div>
+        <!-- 横浜大飯店 -->
+        <div class="spot-card">
+            <a href="https://www.hotpepper.jp/strJ000104769/" target="_blank">
+                <div class="spot-card-img-wrap">
+                    <img class="spot-card-img" src="https://gigaplus.makeshop.jp/gmosp655/img2020/slide1_pc.jpg" alt="横浜大飯店 食べ放題"
+                         style="object-fit:cover;"
+                         onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)'; this.src='';">
+                </div>
+                <div class="spot-card-body">
+                    <span class="spot-category cat-cafe">食べ放題</span>
+                    <h4>横浜大飯店</h4>
+                    <p>食べ放題の名店。オーダー式で出来たて中華を好きなだけ</p>
+                    <small>📍 中華街大通り</small>
+                    <span class="spot-link">Official Site &rarr;</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- ======================================== -->
+    <!--  CHAPTER 04: 散策＆観光                    -->
+    <!-- ======================================== -->
+    <div class="section-divider">
+        <span class="section-number">Chapter 04</span>
+    </div>
+
+    <div class="section-header">
+        <span class="time-badge">15:30 &mdash;</span>
+        <h2>Sightseeing &amp; Stroll</h2>
+        <div class="gold-line"></div>
+        <p class="section-subtitle">中華街から元町・山下公園エリアを散策。</p>
+    </div>
+
+    <p class="intro-text">
+        食べ歩きの後は、海沿いのスポットをのんびり散策。<br>元町のおしゃれな通りから山下公園の絶景まで満喫しよう。
+    </p>
+
+    <div class="spot-grid">
+        <!-- 元町ショッピングストリート -->
+        <div class="spot-card">
+            <a href="https://www.motomachi.or.jp/" target="_blank">
+                <div class="spot-card-img-wrap">
+                    <img class="spot-card-img" src="https://www.motomachi.or.jp/wp-content/uploads/2018/10/01_2500x1000_s.jpg" alt="元町ショッピングストリート"
+                         onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)'; this.src='';">
+                </div>
+                <div class="spot-card-body">
+                    <span class="spot-category cat-shop">ショッピング</span>
+                    <h4>元町ショッピングストリート</h4>
+                    <p>おしゃれなブティックとカフェが並ぶ横浜の銀座</p>
+                    <small>📍 元町・中華街駅すぐ</small>
+                    <span class="spot-link">Official Site &rarr;</span>
+                </div>
+            </a>
+        </div>
+        <!-- 山下公園 -->
+        <div class="spot-card">
+            <a href="https://www.city.yokohama.lg.jp/kurashi/machizukuri-kankyo/midori-koen/koen/koen/daihyoteki/kouen008.html" target="_blank">
+                <div class="spot-card-img-wrap">
+                    <img class="spot-card-img" src="https://www.welcome.city.yokohama.jp/photo/spot/image/P010026_1.jpg" alt="山下公園"
+                         style="object-fit:cover;"
+                         onerror="this.style.background='linear-gradient(135deg,#89CFF0,#4682B4)'; this.src='';">
+                </div>
+                <div class="spot-card-body">
+                    <span class="spot-category cat-spot">散策スポット</span>
+                    <h4>山下公園</h4>
+                    <p>海沿いの美しい公園。氷川丸とベイブリッジの眺望</p>
+                    <small>📍 元町・中華街駅 徒歩5分</small>
+                    <span class="spot-link">Official Site &rarr;</span>
+                </div>
+            </a>
+        </div>
+        <!-- 横浜マリンタワー -->
+        <div class="spot-card">
+            <a href="https://marinetower.yokohama/" target="_blank">
+                <div class="spot-card-img-wrap">
+                    <img class="spot-card-img" src="https://marinetower.yokohama/wp-content/themes/marinetower/assets/img/index/floorguide/img29.jpg" alt="横浜マリンタワー 展望台"
+                         onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)'; this.src='';">
+                </div>
+                <div class="spot-card-body">
+                    <span class="spot-category cat-spot">展望スポット</span>
+                    <h4>横浜マリンタワー</h4>
+                    <p>360度パノラマ展望台。横浜港を一望</p>
+                    <small>📍 元町・中華街駅 徒歩1分</small>
+                    <span class="spot-link">Official Site &rarr;</span>
+                </div>
+            </a>
+        </div>
+        <!-- フォーチュンアクアリウム -->
+        <div class="spot-card">
+            <a href="https://fortune-aquarium.com/" target="_blank">
+                <div class="spot-card-img-wrap">
+                    <img class="spot-card-img" src="https://fortune-aquarium.com/wp/wp-content/uploads/2025/11/fa_hp.png" alt="横浜開運水族館 フォーチュンアクアリウム"
+                         onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)'; this.src='';">
+                </div>
+                <div class="spot-card-body">
+                    <span class="spot-category cat-spot">体験スポット</span>
+                    <h4>フォーチュンアクアリウム</h4>
+                    <p>占い×水族館の新感覚スポット。開運魚からフォーチュン（福）をもらおう</p>
+                    <small>📍 中華街 チャイナスクエア内</small>
+                    <span class="spot-link">Official Site &rarr;</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div><!-- /container -->
+
+<!-- ======================================== -->
+<!--  Schedule Summary (dark section)         -->
+<!-- ======================================== -->
+<section class="schedule-section">
+    <div class="container">
+        <div class="schedule-header">
+            <h2>Daily Itinerary</h2>
+            <div class="gold-line"></div>
+            <p>1日のスケジュールまとめ</p>
+        </div>
+        <div class="schedule-timeline">
+            <div class="schedule-row">
+                <span class="schedule-time">09:30</span>
+                <span class="schedule-dot"></span>
+                <span class="schedule-text">
+                    <strong>横浜エリアに到着（桜木町駅）</strong>
+                    <small>映画館へ向かいます</small>
+                </span>
+            </div>
+            <div class="schedule-row">
+                <span class="schedule-time">10:00</span>
+                <span class="schedule-dot"></span>
+                <span class="schedule-text">
+                    <strong>映画「スペシャルズ」鑑賞</strong>
+                    <small>横浜ブルク13（約110分）</small>
+                </span>
+            </div>
+            <div class="schedule-row">
+                <span class="schedule-time">12:00</span>
+                <span class="schedule-dot"></span>
+                <span class="schedule-text">
+                    <strong>映画終了 → 中華街へ移動</strong>
+                    <small>みなとみらい線で元町・中華街駅</small>
+                </span>
+            </div>
+            <div class="schedule-row">
+                <span class="schedule-time">12:30</span>
+                <span class="schedule-dot"></span>
+                <span class="schedule-text">
+                    <strong>中華街ランチ</strong>
+                    <small>萬珍樓, 京華樓 など</small>
+                </span>
+            </div>
+            <div class="schedule-row">
+                <span class="schedule-time">14:00</span>
+                <span class="schedule-dot"></span>
+                <span class="schedule-text">
+                    <strong>中華街食べ歩き</strong>
+                    <small>江戸清, 鵬天閣 など</small>
+                </span>
+            </div>
+            <div class="schedule-row">
+                <span class="schedule-time">15:30</span>
+                <span class="schedule-dot"></span>
+                <span class="schedule-text">
+                    <strong>山下公園を散策</strong>
+                    <small>海沿いをのんびり歩こう</small>
+                </span>
+            </div>
+            <div class="schedule-row">
+                <span class="schedule-time">16:30</span>
+                <span class="schedule-dot"></span>
+                <span class="schedule-text">
+                    <strong>元町ショッピングストリートでお買い物</strong>
+                    <small>おしゃれなお店を散策</small>
+                </span>
+            </div>
+            <div class="schedule-row">
+                <span class="schedule-time">17:30</span>
+                <span class="schedule-dot"></span>
+                <span class="schedule-text">
+                    <strong>マリンタワーから夕景を楽しむ</strong>
+                    <small>360度パノラマの絶景タイム</small>
+                </span>
+            </div>
+            <div class="schedule-row">
+                <span class="schedule-time">18:30</span>
+                <span class="schedule-dot"></span>
+                <span class="schedule-text">
+                    <strong>帰路へ</strong>
+                    <small>最高の1日をありがとう！</small>
+                </span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <p class="footer-message">3人で過ごす最高の土曜日になりますように。</p>
+    <div class="gold-line"></div>
+    <p class="footer-link" style="margin-top:16px;">
+        映画公式サイト：<a href="https://eiga-specials.com/" target="_blank">eiga-specials.com</a>
+    </p>
+</footer>
+
+</body>
+</html>
