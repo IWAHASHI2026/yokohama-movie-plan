@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>横浜映画計画 - ページ一覧</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+      background: #0a0a1a;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 20px;
+    }
+    h1 {
+      font-size: 2rem;
+      letter-spacing: 0.2em;
+      margin-bottom: 8px;
+      color: #e8c97a;
+    }
+    .subtitle {
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 50px;
+      letter-spacing: 0.1em;
+    }
+    .section {
+      width: 100%;
+      max-width: 700px;
+      margin-bottom: 40px;
+    }
+    .section-title {
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: #666;
+      text-transform: uppercase;
+      border-bottom: 1px solid #222;
+      padding-bottom: 8px;
+      margin-bottom: 16px;
+    }
+    .links {
+      display: grid;
+      gap: 10px;
+    }
+    a {
+      display: block;
+      padding: 16px 20px;
+      background: #111;
+      border: 1px solid #222;
+      border-radius: 8px;
+      color: #ddd;
+      text-decoration: none;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      transition: all 0.2s;
+    }
+    a:hover {
+      border-color: #e8c97a;
+      color: #e8c97a;
+      background: #161610;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-left: 10px;
+      vertical-align: middle;
+      opacity: 0.7;
+    }
+    .tag-plan { background: #1a3a2a; color: #5c9; }
+    .tag-design { background: #1a1a3a; color: #89f; }
+  </style>
+</head>
+<body>
+  <h1>横浜映画計画</h1>
+  <p class="subtitle">2026.3.3 土曜日の映画計画</p>
+
+  <div class="section">
+    <p class="section-title">メインページ</p>
+    <div class="links">
+      <a href="saturday_plan.html">土曜日の映画計画 <span class="tag tag-plan">MAIN</span></a>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-title">食事プラン</p>
+    <div class="links">
+      <a href="plan_a_italian.html">Plan A — イタリアン <span class="tag tag-plan">PLAN</span></a>
+      <a href="plan_b_japanese.html">Plan B — 和食 <span class="tag tag-plan">PLAN</span></a>
+      <a href="plan_c_ethnic.html">Plan C — エスニック <span class="tag tag-plan">PLAN</span></a>
+      <a href="plan_d_chinese.html">Plan D — 中華 <span class="tag tag-plan">PLAN</span></a>
+      <a href="plan_e_sweets.html">Plan E — スイーツ <span class="tag tag-plan">PLAN</span></a>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-title">デザインバリエーション</p>
+    <div class="links">
+      <a href="design_magazine.html">マガジン風 <span class="tag tag-design">DESIGN</span></a>
+      <a href="design_neon.html">ネオン風 <span class="tag tag-design">DESIGN</span></a>
+      <a href="design_ocean.html">オーシャン風 <span class="tag tag-design">DESIGN</span></a>
+      <a href="design_retro.html">レトロ風 <span class="tag tag-design">DESIGN</span></a>
+      <a href="design_sakura.html">桜風 <span class="tag tag-design">DESIGN</span></a>
+    </div>
+  </div>
+</body>
+</html>
