@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3/7(土) 確定スケジュール - 映画 &times; しゃぶしゃぶ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --white: #fafafa;
+            --off-white: #f3f1ee;
+            --black: #1a1a1a;
+            --dark: #2c2c2c;
+            --gold: #c9a96e;
+            --gold-light: #dfc89a;
+            --deep-red: #8b2332;
+            --text-muted: #777;
+            --text-light: #999;
+            --border: #e5e0d8;
+            --shadow: 0 2px 20px rgba(0,0,0,0.06);
+            --shadow-hover: 0 8px 40px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+            background: var(--white);
+            color: var(--black);
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.8;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', 'Noto Sans JP', serif;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+        /* === Top Bar === */
+        .top-bar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 14px 40px;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            background: #fff;
+        }
+        .top-bar span { color: var(--gold); margin: 0 12px; }
+
+        /* === Hero Section === */
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            min-height: 500px;
+            max-height: 750px;
+            overflow: hidden;
+        }
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+        }
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(0,0,0,0.1) 0%,
+                rgba(0,0,0,0.0) 30%,
+                rgba(0,0,0,0.3) 60%,
+                rgba(0,0,0,0.75) 100%
+            );
+        }
+        .hero-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 60px;
+            color: #fff;
+        }
+        .hero-date {
+            display: inline-block;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            border: 1px solid rgba(255,255,255,0.5);
+            padding: 6px 20px;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.9);
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 30px rgba(0,0,0,0.3);
+        }
+        .hero-subtitle {
+            font-size: 1.1rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.85);
+        }
+        .hero-logo {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            max-height: 50px;
+            opacity: 0.9;
+        }
+        .hero-badge {
+            display: inline-block;
+            background: var(--deep-red);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            padding: 6px 16px;
+            margin-bottom: 16px;
+        }
+
+        /* === Container === */
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* === Section Divider === */
+        .section-divider {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 80px 0 50px;
+        }
+        .section-divider::before,
+        .section-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+        .section-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold);
+            white-space: nowrap;
+        }
+
+        /* === Section Header === */
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-header h2 {
+            font-size: 2.4rem;
+            margin-bottom: 8px;
+            color: var(--black);
+        }
+        .section-header .section-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        .section-header .time-badge {
+            display: inline-block;
+            margin-bottom: 12px;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            color: var(--deep-red);
+            border: 1px solid var(--deep-red);
+            padding: 4px 16px;
+        }
+
+        /* === Gold Accent Line === */
+        .gold-line {
+            width: 50px;
+            height: 2px;
+            background: var(--gold);
+            margin: 16px auto;
+        }
+
+        /* === Movie Section === */
+        .movie-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border: 1px solid var(--border);
+            margin-bottom: 40px;
+        }
+        .movie-detail-item {
+            padding: 22px 28px;
+            border-bottom: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+        }
+        .movie-detail-item:nth-child(even) { border-right: none; }
+        .movie-detail-item:nth-last-child(-n+2) { border-bottom: none; }
+        .movie-detail-label {
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .movie-detail-value {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        .movie-synopsis {
+            background: var(--off-white);
+            padding: 35px 40px;
+            margin: 40px 0;
+            border-left: 3px solid var(--gold);
+            font-size: 0.95rem;
+            line-height: 2;
+            color: var(--dark);
+        }
+        .movie-synopsis strong {
+            color: var(--deep-red);
+            font-weight: 700;
+        }
+        .movie-synopsis .theme-song {
+            display: block;
+            margin-top: 16px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* === Cast Grid === */
+        .cast-section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.75rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        .cast-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        .cast-item { text-align: center; }
+        .cast-item img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            filter: grayscale(20%);
+            transition: filter 0.3s;
+            border: 2px solid var(--border);
+            margin-bottom: 10px;
+        }
+        .cast-item:hover img { filter: grayscale(0%); }
+        .cast-name {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 2px;
+        }
+        .cast-role {
+            font-size: 0.7rem;
+            color: var(--text-light);
+        }
+
+        /* === Theater Info === */
+        .theater-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            background: var(--black);
+            color: #fff;
+            padding: 24px 32px;
+            margin: 40px 0;
+        }
+        .theater-info-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .theater-icon { font-size: 1.6rem; }
+        .theater-label {
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 2px;
+        }
+        .theater-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        .theater-sub {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.5);
+            margin-top: 2px;
+        }
+
+        .ticket-cta {
+            display: inline-block;
+            background: var(--deep-red);
+            color: #fff;
+            padding: 12px 32px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: background 0.3s;
+        }
+        .ticket-cta:hover { background: #a02e40; }
+
+        .note-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: var(--off-white);
+            padding: 20px 24px;
+            margin-top: 20px;
+            font-size: 0.82rem;
+            color: var(--dark);
+            border: 1px solid var(--border);
+        }
+        .note-box-icon { font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+        .note-box strong { color: var(--deep-red); }
+
+        /* === Screenshot Gallery === */
+        .screenshot-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 40px 0;
+        }
+        .screenshot-gallery.three-col {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        .screenshot-item {
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .screenshot-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+        .screenshot-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s;
+        }
+        .screenshot-item:hover img { transform: scale(1.03); }
+        .screenshot-item.wide {
+            grid-column: span 2;
+        }
+        .screenshot-item.wide img {
+            height: 300px;
+        }
+        .screenshot-caption {
+            padding: 12px 16px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: #fff;
+            letter-spacing: 1px;
+        }
+
+        /* === Lunch Section === */
+        .lunch-hero {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+        .lunch-hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .lunch-hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.6) 100%);
+        }
+        .lunch-hero-content {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            color: #fff;
+        }
+        .lunch-hero-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+        }
+        .lunch-hero-content p {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .lunch-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border: 1px solid var(--border);
+            margin-bottom: 40px;
+        }
+        .lunch-info-item {
+            padding: 22px 28px;
+            border-bottom: 1px solid var(--border);
+            border-right: 1px solid var(--border);
+        }
+        .lunch-info-item:nth-child(even) { border-right: none; }
+        .lunch-info-item:nth-last-child(-n+2) { border-bottom: none; }
+        .lunch-info-label {
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .lunch-info-value {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--black);
+        }
+
+        .lunch-desc {
+            background: var(--off-white);
+            padding: 35px 40px;
+            margin: 40px 0;
+            border-left: 3px solid var(--gold);
+            font-size: 0.95rem;
+            line-height: 2;
+            color: var(--dark);
+        }
+
+        /* === Interlude Section (車移動) === */
+        .interlude {
+            text-align: center;
+            padding: 60px 40px;
+            background: var(--off-white);
+            margin: 60px 0;
+        }
+        .interlude-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        .interlude h3 {
+            font-size: 1.3rem;
+            color: var(--black);
+            margin-bottom: 8px;
+        }
+        .interlude p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .interlude-badge {
+            display: inline-block;
+            margin-top: 16px;
+            font-family: 'Playfair Display', serif;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            color: var(--deep-red);
+            border: 1px solid var(--deep-red);
+            padding: 4px 16px;
+        }
+
+        /* === Schedule Section === */
+        .schedule-section {
+            background: var(--black);
+            color: #fff;
+            padding: 80px 40px;
+            margin-top: 80px;
+        }
+        .schedule-section .container { max-width: 980px; margin: 0 auto; }
+        .schedule-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .schedule-header h2 {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .schedule-header .gold-line { background: var(--gold); }
+        .schedule-header p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+            margin-top: 12px;
+        }
+        .schedule-timeline {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .schedule-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .schedule-row:last-child { border-bottom: none; }
+        .schedule-time {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+            min-width: 70px;
+            flex-shrink: 0;
+            padding-top: 2px;
+        }
+        .schedule-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            flex-shrink: 0;
+            margin-top: 8px;
+            position: relative;
+        }
+        .schedule-dot::after {
+            content: '';
+            position: absolute;
+            top: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 50px;
+            background: rgba(201,169,110,0.2);
+        }
+        .schedule-row:last-child .schedule-dot::after { display: none; }
+        .schedule-text strong {
+            display: block;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+        }
+        .schedule-text small {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* === Footer === */
+        .footer {
+            text-align: center;
+            padding: 50px 40px;
+            border-top: 1px solid var(--border);
+            background: #fff;
+        }
+        .footer-message {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--dark);
+            margin-bottom: 16px;
+        }
+        .footer-link {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+        .footer-link a {
+            color: var(--gold);
+            text-decoration: none;
+            border-bottom: 1px solid var(--gold-light);
+        }
+        .footer-link a:hover { color: var(--deep-red); border-color: var(--deep-red); }
+
+        .intro-text {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 20px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.9;
+        }
+
+        /* === Responsive === */
+        @media (max-width: 768px) {
+            .hero { height: 60vh; min-height: 380px; }
+            .hero-content { padding: 30px 24px; }
+            .hero h1 { font-size: 2rem; }
+            .hero-logo { max-height: 36px; right: 20px; top: 20px; }
+            .container { padding: 0 20px; }
+            .section-header h2 { font-size: 1.8rem; }
+            .movie-details, .lunch-info-grid { grid-template-columns: 1fr; }
+            .movie-detail-item, .lunch-info-item { border-right: none; }
+            .movie-detail-item:nth-last-child(-n+2),
+            .lunch-info-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+            .movie-detail-item:last-child,
+            .lunch-info-item:last-child { border-bottom: none; }
+            .cast-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+            .cast-item img { width: 70px; height: 70px; }
+            .theater-info { flex-direction: column; align-items: flex-start; gap: 20px; }
+            .movie-synopsis, .lunch-desc { padding: 24px; }
+            .schedule-section { padding: 60px 20px; }
+            .schedule-row { gap: 16px; }
+            .top-bar { padding: 12px 20px; font-size: 0.6rem; letter-spacing: 3px; }
+            .section-divider { margin: 60px 0 40px; }
+            .screenshot-gallery { grid-template-columns: 1fr; }
+            .screenshot-gallery.three-col { grid-template-columns: 1fr; }
+            .screenshot-item.wide { grid-column: span 1; }
+            .screenshot-item.wide img { height: 200px; }
+            .lunch-hero { height: 280px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.6rem; }
+            .hero-subtitle { font-size: 0.85rem; }
+            .section-header h2 { font-size: 1.5rem; }
+            .cast-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="top-bar">
+    YOKOHAMA <span>&mdash;</span> FINAL SCHEDULE <span>&mdash;</span> 2026
+</div>
+
+<!-- Hero: Full-width movie key visual -->
+<section class="hero">
+    <img class="hero-img" src="https://eiga-specials.com/assets/images/top/kv3.jpg" alt="スペシャルズ キービジュアル">
+    <div class="hero-overlay"></div>
+    <img class="hero-logo" src="https://eiga-specials.com/assets/images/top/kv_logo.png" alt="スペシャルズ ロゴ">
+    <div class="hero-content">
+        <div class="hero-badge">CONFIRMED</div><br>
+        <div class="hero-date">2026.03.07 Saturday</div>
+        <h1>確定スケジュール</h1>
+        <p class="hero-subtitle">映画 &times; ホワイトデーの買い物 &times; しゃぶしゃぶランチ &mdash; 最高の土曜日を。</p>
+    </div>
+</section>
+
+<div class="container">
+
+    <!-- ======================================== -->
+    <!--  CHAPTER 01: 映画鑑賞                     -->
+    <!-- ======================================== -->
+    <div class="section-divider">
+        <span class="section-number">Chapter 01</span>
+    </div>
+
+    <div class="section-header">
+        <span class="time-badge">8:50 &mdash; 10:50</span>
+        <h2>Movie</h2>
+        <div class="gold-line"></div>
+        <p class="section-subtitle">109シネマズゆめが丘で、朝イチの映画鑑賞。</p>
+    </div>
+
+    <!-- Movie Details Grid -->
+    <div class="movie-details">
+        <div class="movie-detail-item">
+            <div class="movie-detail-label">Title</div>
+            <div class="movie-detail-value">スペシャルズ THE SPECIALS</div>
+        </div>
+        <div class="movie-detail-item">
+            <div class="movie-detail-label">Showtime</div>
+            <div class="movie-detail-value">8:50 〜 10:50</div>
+        </div>
+        <div class="movie-detail-item">
+            <div class="movie-detail-label">Genre</div>
+            <div class="movie-detail-value">ダンスアクション・エンタメ</div>
+        </div>
+        <div class="movie-detail-item">
+            <div class="movie-detail-label">Runtime</div>
+            <div class="movie-detail-value">約120分（110分＋予告）</div>
+        </div>
+    </div>
+
+    <!-- Synopsis -->
+    <div class="movie-synopsis">
+        <strong>殺し屋たちがダンス！？</strong><br><br>
+        伝説の殺し屋たちが「ダンス経験がある」という理由で集められる。裏社会のトップを暗殺するため、ダンス大会への出場を目指してチームを結成！しかし実はド素人で、ダンス教室に通い始めるも問題を起こして破門...。児童養護施設のダンス少女・明香の助けを借りながら、個性的な5人が「スペシャルな」チームへと成長していく！
+        <span class="theme-song">主題歌：Snow Man「オドロウゼ！」</span>
+    </div>
+
+    <!-- Cast -->
+    <div class="cast-section-title">Main Cast</div>
+    <div class="cast-grid">
+        <div class="cast-item">
+            <img src="https://eiga-specials.com/assets/images/cast/sakuma-daisuke/pic.jpg" alt="佐久間大介">
+            <div class="cast-name">佐久間大介</div>
+            <div class="cast-role">ダイヤ役</div>
+        </div>
+        <div class="cast-item">
+            <img src="https://eiga-specials.com/assets/images/cast/shiina-kippei/pic.jpg" alt="椎名桔平">
+            <div class="cast-name">椎名桔平</div>
+            <div class="cast-role">熊城役</div>
+        </div>
+        <div class="cast-item">
+            <img src="https://eiga-specials.com/assets/images/cast/nakamoto-yuta/pic.jpg" alt="中本悠太">
+            <div class="cast-name">中本悠太</div>
+            <div class="cast-role">桐生役</div>
+        </div>
+        <div class="cast-item">
+            <img src="https://eiga-specials.com/assets/images/cast/aoyagi-sho/pic.jpg" alt="青柳翔">
+            <div class="cast-name">青柳翔</div>
+            <div class="cast-role">シン役</div>
+        </div>
+        <div class="cast-item">
+            <img src="https://eiga-specials.com/assets/images/cast/ozawa-hitoshi/pic.jpg" alt="小沢仁志">
+            <div class="cast-name">小沢仁志</div>
+            <div class="cast-role">村雨役</div>
+        </div>
+    </div>
+
+    <!-- Theater Info -->
+    <div class="theater-info">
+        <div class="theater-info-left">
+            <div class="theater-icon">🎥</div>
+            <div>
+                <div class="theater-label">Theater</div>
+                <div class="theater-name">109シネマズゆめが丘</div>
+                <div class="theater-sub">相鉄線 ゆめが丘駅 直結 / ゆめが丘ソラトス内</div>
+            </div>
+        </div>
+        <a href="https://109cinemas.net/yumegaoka/" target="_blank" class="ticket-cta">
+            劇場サイトを見る
+        </a>
+    </div>
+
+    <!-- 109シネマズゆめが丘 キャプチャ画像 -->
+    <div class="screenshot-gallery">
+        <div class="screenshot-item wide">
+            <img src="https://109cinemas.net/media/W1siZiIsIjIwMjQvMDYvMjgvMTRfMTdfMDJfMzkyXzEwOXRoZWF0ZXJfcmVudGFsXzE5MjB4OTYwLmpwZyJdLFsicCIsInRodW1iIiwiNjQweDMyMCMiXV0/109theater-rental_1920x960.jpg" alt="109シネマズ シアター"
+                 onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)'; this.alt='Theater Image';">
+            <div class="screenshot-caption">109シネマズ - 大迫力のスクリーン</div>
+        </div>
+        <div class="screenshot-item">
+            <img src="https://109cinemas.net/img/logo-trans.png" alt="109シネマズ ロゴ"
+                 style="object-fit: contain; background: var(--black); padding: 30px;"
+                 onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)';">
+            <div class="screenshot-caption">109 CINEMAS</div>
+        </div>
+        <div class="screenshot-item">
+            <img src="https://109cinemas.net/img/imax/imaxbnr_theatre310x60.jpg" alt="IMAX"
+                 style="object-fit: contain; background: var(--black); padding: 20px;"
+                 onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)';">
+            <div class="screenshot-caption">最新設備の劇場</div>
+        </div>
+    </div>
+
+    <!-- 映画キャプチャ画像 -->
+    <div class="screenshot-gallery three-col">
+        <div class="screenshot-item">
+            <img src="https://eiga-specials.com/assets/images/top/intro_pic1.png" alt="スペシャルズ イントロ1"
+                 onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)'; this.alt='Movie Image';">
+            <div class="screenshot-caption">映画「スペシャルズ」場面写真</div>
+        </div>
+        <div class="screenshot-item">
+            <img src="https://eiga-specials.com/assets/images/top/intro_pic2.png" alt="スペシャルズ イントロ2"
+                 onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)'; this.alt='Movie Image';">
+            <div class="screenshot-caption">ダンスアクションの迫力</div>
+        </div>
+        <div class="screenshot-item">
+            <img src="https://eiga-specials.com/assets/images/top/bnr_theater.jpg" alt="劇場情報"
+                 onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)'; this.alt='Theater Info';">
+            <div class="screenshot-caption">劇場情報</div>
+        </div>
+    </div>
+
+    <!-- キャスト追加キャプチャ -->
+    <div class="cast-section-title">Other Cast</div>
+    <div class="screenshot-gallery three-col">
+        <div class="screenshot-item">
+            <img src="https://eiga-specials.com/assets/images/cast/urara.jpg" alt="羽楽"
+                 style="object-fit: cover; object-position: top;"
+                 onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)';">
+            <div class="screenshot-caption">羽楽</div>
+        </div>
+        <div class="screenshot-item">
+            <img src="https://eiga-specials.com/assets/images/cast/maeda-aki.jpg" alt="前田亜季"
+                 style="object-fit: cover; object-position: top;"
+                 onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)';">
+            <div class="screenshot-caption">前田亜季</div>
+        </div>
+        <div class="screenshot-item">
+            <img src="https://eiga-specials.com/assets/images/cast/hirakawa-yuzuki.jpg" alt="平川結月"
+                 style="object-fit: cover; object-position: top;"
+                 onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)';">
+            <div class="screenshot-caption">平川結月</div>
+        </div>
+    </div>
+
+    <div class="screenshot-gallery">
+        <div class="screenshot-item wide">
+            <img src="https://eiga-specials.com/assets/images/top/bnr_ticket.jpg" alt="チケット情報"
+                 onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)';">
+            <div class="screenshot-caption">チケット情報</div>
+        </div>
+        <div class="screenshot-item">
+            <img src="https://eiga-specials.com/assets/images/top/bnr_mvtk.jpg" alt="ムビチケ"
+                 onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)';">
+            <div class="screenshot-caption">ムビチケ</div>
+        </div>
+        <div class="screenshot-item">
+            <img src="https://eiga-specials.com/assets/images/top/bnr_mvtk_card.jpg" alt="ムビチケカード"
+                 onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)';">
+            <div class="screenshot-caption">ムビチケカード</div>
+        </div>
+    </div>
+
+</div><!-- /container -->
+
+<!-- ======================================== -->
+<!--  Interlude: ホワイトデーの買い物 & 車移動   -->
+<!-- ======================================== -->
+<div class="interlude">
+    <div class="interlude-icon">🎁</div>
+    <h3>White Day Shopping &amp; Drive</h3>
+    <p>映画の後はホワイトデーの買い物。<br>ゆめが丘ソラトスでお買い物を楽しんだら、車で戸塚方面へ移動！</p>
+    <div class="interlude-badge">10:50 &mdash; Car Move</div>
+</div>
+
+<div class="container">
+
+    <!-- ======================================== -->
+    <!--  CHAPTER 02: ランチ しゃぶ葉              -->
+    <!-- ======================================== -->
+    <div class="section-divider">
+        <span class="section-number">Chapter 02</span>
+    </div>
+
+    <div class="section-header">
+        <span class="time-badge">Lunch Time</span>
+        <h2>Shabu-Shabu</h2>
+        <div class="gold-line"></div>
+        <p class="section-subtitle">しゃぶ葉ライズモール戸塚店で食べ放題ランチ！</p>
+    </div>
+
+    <!-- しゃぶ葉ヒーロー画像 -->
+    <div class="lunch-hero">
+        <img src="https://www.skylark.co.jp/syabuyo/nq2pkh000000tpwe-img/kv_img_gyutan_0219.jpg" alt="しゃぶ葉 牛たん"
+             onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)';">
+        <div class="lunch-hero-overlay"></div>
+        <div class="lunch-hero-content">
+            <h3>しゃぶ葉 ライズモール戸塚店</h3>
+            <p>みんなで楽しくしゃぶしゃぶ食べ放題</p>
+        </div>
+    </div>
+
+    <!-- Lunch Details Grid -->
+    <div class="lunch-info-grid">
+        <div class="lunch-info-item">
+            <div class="lunch-info-label">Restaurant</div>
+            <div class="lunch-info-value">しゃぶ葉 ライズモール戸塚店</div>
+        </div>
+        <div class="lunch-info-item">
+            <div class="lunch-info-label">Style</div>
+            <div class="lunch-info-value">しゃぶしゃぶ食べ放題</div>
+        </div>
+        <div class="lunch-info-item">
+            <div class="lunch-info-label">Address</div>
+            <div class="lunch-info-value">横浜市戸塚区戸塚町1313-7<br>ライズモール戸塚 2F</div>
+        </div>
+        <div class="lunch-info-item">
+            <div class="lunch-info-label">Hours (Saturday)</div>
+            <div class="lunch-info-value">10:30 〜 22:30</div>
+        </div>
+        <div class="lunch-info-item">
+            <div class="lunch-info-label">Phone</div>
+            <div class="lunch-info-value">045-392-8161</div>
+        </div>
+        <div class="lunch-info-item">
+            <div class="lunch-info-label">Access</div>
+            <div class="lunch-info-value">109シネマズゆめが丘から車で約15分</div>
+        </div>
+    </div>
+
+    <!-- しゃぶ葉の説明 -->
+    <div class="lunch-desc">
+        <strong style="color: var(--deep-red);">しゃぶしゃぶ食べ放題でお腹いっぱい！</strong><br><br>
+        お肉もお野菜も食べ放題。複数のだしから選べるしゃぶしゃぶで、家族みんなが好きな味を楽しめます。サイドメニューのカレー、ご飯、うどんなども食べ放題。デザートバーにはわたあめやソフトクリームも！
+    </div>
+
+    <!-- しゃぶ葉 キャプチャ画像ギャラリー -->
+    <div class="screenshot-gallery">
+        <div class="screenshot-item wide">
+            <img src="https://www.skylark.co.jp/syabuyo/nq2pkh000000tpwe-img/kv_img_fair_0122.jpg" alt="しゃぶ葉 フェア"
+                 onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)';">
+            <div class="screenshot-caption">しゃぶ葉 - 背徳至高のグルメフェア開催中</div>
+        </div>
+        <div class="screenshot-item">
+            <img src="https://www.skylark.co.jp/syabuyo/nq2pkh000000tpwe-img/kv_img_kurobuta_1120.jpg" alt="しゃぶ葉 黒豚＆牛みすじ"
+                 onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)';">
+            <div class="screenshot-caption">黒豚＆牛みすじ</div>
+        </div>
+        <div class="screenshot-item">
+            <img src="https://www.skylark.co.jp/syabuyo/nq2pkh000000tpwe-img/kv_img_kokusanmai_0806.jpg" alt="しゃぶ葉 国産米"
+                 onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)';">
+            <div class="screenshot-caption">国産米使用のご飯</div>
+        </div>
+    </div>
+
+    <div class="screenshot-gallery">
+        <div class="screenshot-item">
+            <img src="https://www.skylark.co.jp/syabuyo/nq2pkh000000tpwe-img/kv_img_0122.jpg" alt="しゃぶ葉 濃厚クラムチャウダーだし"
+                 onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)';">
+            <div class="screenshot-caption">濃厚クラムチャウダーだし</div>
+        </div>
+        <div class="screenshot-item">
+            <img src="https://www.skylark.co.jp/syabuyo/nq2pkh000000tpwe-img/img_key_fair_about0122.jpg" alt="しゃぶ葉 フェア詳細"
+                 onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)';">
+            <div class="screenshot-caption">フェア詳細</div>
+        </div>
+    </div>
+
+    <!-- 店舗キャプチャ -->
+    <div class="screenshot-gallery three-col">
+        <div class="screenshot-item">
+            <img src="https://www.skylark.co.jp/store_info/store_images/198244_01.webp" alt="しゃぶ葉 ライズモール戸塚店 1"
+                 onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)';">
+            <div class="screenshot-caption">店舗写真 1</div>
+        </div>
+        <div class="screenshot-item">
+            <img src="https://www.skylark.co.jp/store_info/store_images/198244_02.webp" alt="しゃぶ葉 ライズモール戸塚店 2"
+                 onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)';">
+            <div class="screenshot-caption">店舗写真 2</div>
+        </div>
+        <div class="screenshot-item">
+            <img src="https://www.skylark.co.jp/store_info/store_images/198244_03.webp" alt="しゃぶ葉 ライズモール戸塚店 3"
+                 onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)';">
+            <div class="screenshot-caption">店舗写真 3</div>
+        </div>
+    </div>
+
+    <div class="screenshot-gallery">
+        <div class="screenshot-item">
+            <img src="https://www.skylark.co.jp/store_info/store_images/198244_04.webp" alt="しゃぶ葉 ライズモール戸塚店 4"
+                 onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)';">
+            <div class="screenshot-caption">店舗写真 4</div>
+        </div>
+        <div class="screenshot-item">
+            <img src="https://www.skylark.co.jp/store_info/store_images/198244_05.webp" alt="しゃぶ葉 ライズモール戸塚店 5"
+                 onerror="this.style.background='linear-gradient(135deg,#c9a96e,#8b2332)';">
+            <div class="screenshot-caption">店舗写真 5</div>
+        </div>
+    </div>
+
+    <!-- Theater & Restaurant Links -->
+    <div class="theater-info" style="margin-top: 40px;">
+        <div class="theater-info-left">
+            <div class="theater-icon">🍲</div>
+            <div>
+                <div class="theater-label">Restaurant</div>
+                <div class="theater-name">しゃぶ葉 ライズモール戸塚店</div>
+                <div class="theater-sub">〒244-0003 横浜市戸塚区戸塚町1313-7</div>
+            </div>
+        </div>
+        <a href="https://store-info.skylark.co.jp/syabuyo/map/198244/" target="_blank" class="ticket-cta">
+            店舗情報を見る
+        </a>
+    </div>
+
+    <div class="note-box">
+        <span class="note-box-icon">&#9670;</span>
+        <span>
+            土曜日は <strong>10:30</strong> オープン。入店は閉店1時間前（21:30）まで。<br>
+            駐車場はライズモール戸塚の共用駐車場をご利用ください。
+        </span>
+    </div>
+
+</div><!-- /container -->
+
+<!-- ======================================== -->
+<!--  Schedule Summary (dark section)         -->
+<!-- ======================================== -->
+<section class="schedule-section">
+    <div class="container">
+        <div class="schedule-header">
+            <h2>Daily Itinerary</h2>
+            <div class="gold-line"></div>
+            <p>1日のスケジュールまとめ</p>
+        </div>
+        <div class="schedule-timeline">
+            <div class="schedule-row">
+                <span class="schedule-time">08:30</span>
+                <span class="schedule-dot"></span>
+                <span class="schedule-text">
+                    <strong>109シネマズゆめが丘に到着</strong>
+                    <small>相鉄線ゆめが丘駅直結 / ゆめが丘ソラトス内</small>
+                </span>
+            </div>
+            <div class="schedule-row">
+                <span class="schedule-time">08:50</span>
+                <span class="schedule-dot"></span>
+                <span class="schedule-text">
+                    <strong>映画「スペシャルズ」上映開始</strong>
+                    <small>109シネマズゆめが丘（約120分）</small>
+                </span>
+            </div>
+            <div class="schedule-row">
+                <span class="schedule-time">10:50</span>
+                <span class="schedule-dot"></span>
+                <span class="schedule-text">
+                    <strong>映画終了</strong>
+                    <small>ゆめが丘ソラトスでお買い物タイム</small>
+                </span>
+            </div>
+            <div class="schedule-row">
+                <span class="schedule-time">11:00</span>
+                <span class="schedule-dot"></span>
+                <span class="schedule-text">
+                    <strong>🎁 ホワイトデーの買い物</strong>
+                    <small>ゆめが丘ソラトス内でショッピング</small>
+                </span>
+            </div>
+            <div class="schedule-row">
+                <span class="schedule-time">11:30</span>
+                <span class="schedule-dot"></span>
+                <span class="schedule-text">
+                    <strong>🚗 車で戸塚方面へ移動</strong>
+                    <small>ゆめが丘 → ライズモール戸塚（約15分）</small>
+                </span>
+            </div>
+            <div class="schedule-row">
+                <span class="schedule-time">12:00</span>
+                <span class="schedule-dot"></span>
+                <span class="schedule-text">
+                    <strong>🍲 しゃぶ葉でランチ</strong>
+                    <small>ライズモール戸塚2F / しゃぶしゃぶ食べ放題</small>
+                </span>
+            </div>
+            <div class="schedule-row">
+                <span class="schedule-time">13:30</span>
+                <span class="schedule-dot"></span>
+                <span class="schedule-text">
+                    <strong>ランチ終了 → 帰路へ</strong>
+                    <small>最高の1日をありがとう！</small>
+                </span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <p class="footer-message">3人で過ごす最高の土曜日になりますように。</p>
+    <div class="gold-line"></div>
+    <p class="footer-link" style="margin-top:16px;">
+        映画公式サイト：<a href="https://eiga-specials.com/" target="_blank">eiga-specials.com</a>
+        &nbsp;|&nbsp;
+        劇場：<a href="https://109cinemas.net/yumegaoka/" target="_blank">109シネマズゆめが丘</a>
+        &nbsp;|&nbsp;
+        ランチ：<a href="https://store-info.skylark.co.jp/syabuyo/map/198244/" target="_blank">しゃぶ葉 ライズモール戸塚店</a>
+    </p>
+</footer>
+
+</body>
+</html>
